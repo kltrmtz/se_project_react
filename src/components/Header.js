@@ -1,21 +1,23 @@
-const Header = () => {
+const Header = ({ onCreateModal }) => {
   console.log("Header");
 
   return (
     <header className="header">
       <div className="header__logo">
         <div>
-          <img src="/images/logo.svg" alt="logo" />
+          <img src={require("../Images/logo.svg").default} alt="logo" />
         </div>
         <div>Date</div>
       </div>
       <div className="header__avatar-logo">
         <div>
-          <button type="text"> + Add Clothes</button>
+          <button type="text" onClick={onCreateModal}>
+            + Add Clothes
+          </button>
         </div>
         <div>Name</div>
         <div>
-          <img src="/images/avatar.svg" alt="avatar" />
+          <img src={require("../Images/avatar.svg").default} alt="avatar" />
         </div>
       </div>
     </header>

@@ -1,19 +1,63 @@
 const weatherOptions = [
-  { url: "./images/day/day-sunny.svg", day: true, type: "sunny" },
-  { url: "./images/day/day-fog.svg", day: true, type: "fog" },
-  { url: "./images/day/day-cloudy.svg", day: true, type: "cloudy" },
-  { url: "./images/day/day-rain.svg", day: true, type: "rain" },
-  { url: "./images/day/day-storm.svg", day: true, type: "storm" },
-  { url: "./images/day/day-snow.svg", day: true, type: "snow" },
-  { url: "./images/night/night-sunny.svg", day: false, type: "sunny" },
-  { url: "./images/night/night-fog.svg", day: false, type: "fog" },
-  { url: "./images/night/night-cloudy.svg", day: false, type: "cloudy" },
-  { url: "./images/night/night-rain.svg", day: false, type: "rain" },
-  { url: "./images/night/night-storm.svg", day: false, type: "storm" },
-  { url: "./images/night/night-snow.svg", day: false, type: "snow" },
+  {
+    url: require("../Images/day/day-sunny.svg").default,
+    day: true,
+    type: "sunny",
+  },
+  { url: require("../Images/day/day-fog.svg").default, day: true, type: "fog" },
+  {
+    url: require("../Images/day/day-cloudy.svg").default,
+    day: true,
+    type: "cloudy",
+  },
+  {
+    url: require("../Images/day/day-rain.svg").default,
+    day: true,
+    type: "rain",
+  },
+  {
+    url: require("../Images/day/day-storm.svg").default,
+    day: true,
+    type: "storm",
+  },
+  {
+    url: require("../Images/day/day-snow.svg").default,
+    day: true,
+    type: "snow",
+  },
+  {
+    url: require("../Images/night/night-sunny.svg").default,
+    day: false,
+    type: "sunny",
+  },
+  {
+    url: require("../Images/night/night-fog.svg").default,
+    day: false,
+    type: "fog",
+  },
+  {
+    url: require("../Images/night/night-cloudy.svg").default,
+    day: false,
+    type: "cloudy",
+  },
+  {
+    url: require("../Images/night/night-rain.svg").default,
+    day: false,
+    type: "rain",
+  },
+  {
+    url: require("../Images/night/night-storm.svg").default,
+    day: false,
+    type: "storm",
+  },
+  {
+    url: require("../Images/night/night-snow.svg").default,
+    day: false,
+    type: "snow",
+  },
 ];
 
-const WeatherCard = ({ day, type }) => {
+const WeatherCard = ({ day = true, type = "sunny", weatherTemp = "" }) => {
   console.log("weather card");
   const imageSrc = weatherOptions.filter((i) => {
     console.log(i);
@@ -26,7 +70,7 @@ const WeatherCard = ({ day, type }) => {
 
   return (
     <section className="weather" id="weather">
-      <div className="weather_info">65°F</div>
+      <div className="weather_info">{weatherTemp} °F</div>
       <img src={imageSrcUrl} className="weather_image" />
     </section>
   );
