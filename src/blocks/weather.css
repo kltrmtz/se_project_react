@@ -4,14 +4,17 @@
 
 .weather_info {
   position: absolute;
-  top: 12px;
+  top: 20px;
   left: 16px;
-  font-style: bold;
-  font-size: 36px;
   color: white;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 40px;
 }
 
 .weather_image {
   width: 100%;
   height: 80px;
+  margin: 0;
 }

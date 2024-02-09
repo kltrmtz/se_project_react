@@ -9,7 +9,7 @@ import ItemModal from "./ItemModal.js";
 import { getForecastWeather, parseWeatherData } from "../utils/weatherApi.js";
 
 function App() {
-  const weatherTemp = "7564465°F";
+  const weatherTemp = "";
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
@@ -42,14 +42,16 @@ function App() {
       <Footer />
       {activeModal === "create" && (
         <ModalWithForm title="New Garment" onClose={handleCloseModal}>
-          <label>
-            Name
-            <input type="text" name="name" minLength="1" maxLength="30" />
-          </label>
-          <label>
-            Image
-            <input type="url" name="link" minLength="1" maxLength="30" />
-          </label>
+          <div className="modal__form">
+            <label>
+              Name
+              <input type="text" name="name" minLength="1" maxLength="30" />
+            </label>
+            <label>
+              Image
+              <input type="url" name="link" minLength="1" maxLength="30" />
+            </label>
+          </div>
           <p>Select the weather type:</p>
           <div>
             <div>
