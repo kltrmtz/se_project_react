@@ -7,7 +7,7 @@ const Header = ({ onCreateModal }) => {
         <div>
           <img
             className="header__logo-image"
-            src={require("../Images/logo.svg").default}
+            src={require("../images/logo.svg").default}
             alt="logo"
           />
         </div>
@@ -27,7 +27,7 @@ const Header = ({ onCreateModal }) => {
         <div>
           <img
             className="header__avatar-image"
-            src={require("../Images/avatar.svg").default}
+            src={require("../images/avatar.svg").default}
             alt="avatar"
           />
         </div>

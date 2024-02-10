@@ -34,7 +34,7 @@
   width: 16px;
   height: 16px;
   position: absolute;
-  background-image: url(../Images/close-button.svg);
+  background-image: url("../images/close-button.svg");
   color: #fff;
   border: none;
   background-color: transparent;
@@ -103,7 +103,7 @@
   width: 16px;
   height: 16px;
   position: absolute;
-  background-image: url(../Images/preview-close.svg);
+  background-image: url("../images/preview-close.svg");
   color: #fff;
   border: none;
   background-color: transparent;
