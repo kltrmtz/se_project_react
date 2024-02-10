@@ -3,13 +3,17 @@ const ItemModal = ({ selectedCard, onClose }) => {
 
   return (
     <div className={`modal`}>
-      <div className="modal__content">
-        <button type="button" onClick={onClose}>
-          Close
-        </button>
-        <img src={selectedCard.link}></img>
-        <div>{selectedCard.name}</div>
-        <div>Weather type:{selectedCard.weather}</div>
+      <div className="modal__preview">
+        <button
+          className="modal__preview-close-button"
+          type="button"
+          onClick={onClose}
+        ></button>
+        <img className="modal__preview-image" src={selectedCard.link}></img>
+        <div className="modal__preview-text">
+          <div>{selectedCard.name}</div>
+          <div>Weather type:{selectedCard.weather}</div>
+        </div>
       </div>
     </div>
   );

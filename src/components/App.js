@@ -45,25 +45,59 @@ function App() {
           <div className="modal__form">
             <label>
               Name
-              <input type="text" name="name" minLength="1" maxLength="30" />
+              <input
+                className="modal__form-input"
+                type="text"
+                name="name"
+                id="modal-name-input"
+                placeholder="Name"
+                minLength="1"
+                maxLength="30"
+              />
             </label>
             <label>
               Image
-              <input type="url" name="link" minLength="1" maxLength="30" />
+              <input
+                className="modal__form-input"
+                type="url"
+                name="link"
+                id="modal-url-input"
+                placeholder="Image URL"
+                minLength="1"
+                maxLength="30"
+              />
             </label>
           </div>
           <p>Select the weather type:</p>
-          <div>
+          <div className="modal__radio">
             <div>
-              <input type="radio" id="hot" value="hot" />
+              <input
+                className="modal__radio-check"
+                type="radio"
+                id="specifyColor"
+                value="hot"
+                for="specifyColor"
+              />
               <label>Hot</label>
             </div>
             <div>
-              <input type="radio" id="warm" value="warm" />
+              <input
+                className="modal__radio-check"
+                type="radio"
+                id="specifyColor"
+                value="warm"
+                for="specifyColor"
+              />
               <label>Warm</label>
             </div>
             <div>
-              <input type="radio" id="cold" value="cold" />
+              <input
+                className="modal__radio-check"
+                type="radio"
+                id="specifyColor"
+                value="cold"
+                for="specifyColor"
+              />
               <label>Cold</label>
             </div>
           </div>

@@ -17,13 +17,125 @@
 .modal__content {
   background-color: white;
   max-width: 496px;
+  max-height: 436px;
   width: 100%;
   border-radius: 20px;
-  padding: 34px 36px;
+  padding: 28px 28px 36px 28px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.modal__heading {
+  margin: 0;
+  margin-bottom: 24px;
 }
 
 .modal__close-button {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  background-image: url(../Images/close-button.svg);
+  color: #fff;
+  border: none;
+  background-color: transparent;
+  background-repeat: none;
+  background-size: contain;
+  cursor: pointer;
+  transition: linear;
+  top: 20px;
+  right: 28px;
 }
 
-.modal__submit-button {
+.modal__button {
+  width: 124px;
+  height: 36px;
+  top: 557px;
+  left: 500px;
+  gap: 12px;
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+  margin-top: 32px;
+}
+
+.modal__button:hover {
+  opacity: 80%;
+}
+
+/* .modal__button_disabled {
+  opacity: 20%;
+  color: rgba(0, 0, 0, 1);
+  border-color: rgba(0, 0, 0, 1);
+  border-style: solid;
+  background-color: #fff;
+  cursor: default;
+} */
+
+/* .modal__button_disabled:hover {
+  opacity: 20%;
+} */
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal__form-input {
+  display: flex;
+  border-style: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 1);
+  width: 440px;
+  text-align: left;
+}
+
+.modal__radio {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal__radio-check {
+  margin-right: 8px;
+}
+
+.modal__preview-close-button {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  background-image: url(../Images/preview-close.svg);
+  color: #fff;
+  border: none;
+  background-color: transparent;
+  background-repeat: none;
+  background-size: contain;
+  cursor: pointer;
+  transition: linear;
+  top: 20px;
+  right: 28px;
+}
+
+.modal__preview-image {
+  width: 498px;
+  height: 498px;
+  border-radius: 16px 16px 0 0;
+  background-color: white;
+}
+
+.modal__preview {
+  background-color: white;
+  max-width: 498px;
+  max-height: 610px;
+  width: 100%;
+  border-radius: 16px;
+  position: relative;
+}
+
+.modal__preview-text {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 32px 32px 32px;
+  border-radius: 0 0 16px 16px;
+  gap: 12px;
 }
