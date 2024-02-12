@@ -4,12 +4,12 @@ const ItemCard = ({ item, onSelectCard }) => {
   return (
     <div className="card">
       <div>
-        <div className="card__name">{item.name}</div>
+        <h3 className="card__name">{item.name}</h3>
         <img
           src={item.link}
           className="card__image"
           onClick={() => onSelectCard(item)}
-          alt="card-image"
+          alt={item.name}
         />
       </div>
     </div>

@@ -17,7 +17,7 @@ const ModalWithForm = ({
             className="modal__close-button"
             type="button"
             onClick={onClose}
-          ></button>
+          />
           {children}
           <button
             className="modal__button modal__button_disabled"
