@@ -71,34 +71,40 @@ function App() {
           <p>Select the weather type:</p>
           <div className="modal__radio">
             <div>
-              <input
-                className="modal__radio-check"
-                type="radio"
-                id="specifyColor"
-                value="hot"
-                for="specifyColor"
-              />
-              <label>Hot</label>
+              <label className="modal__input">
+                <input
+                  className="modal__input-radio"
+                  type="radio"
+                  id="hot"
+                  value="hot"
+                  name="weather"
+                />
+                Hot
+              </label>
             </div>
             <div>
-              <input
-                className="modal__radio-check"
-                type="radio"
-                id="specifyColor"
-                value="warm"
-                for="specifyColor"
-              />
-              <label>Warm</label>
+              <label className="modal__input">
+                <input
+                  className="modal__input-radio"
+                  type="radio"
+                  id="warm"
+                  value="warm"
+                  name="weather"
+                />
+                Warm
+              </label>
             </div>
             <div>
-              <input
-                className="modal__radio-check"
-                type="radio"
-                id="specifyColor"
-                value="cold"
-                for="specifyColor"
-              />
-              <label>Cold</label>
+              <label className="modal__input">
+                <input
+                  className="modal__input-radio"
+                  type="radio"
+                  id="cold"
+                  value="cold"
+                  name="weather"
+                />
+                Cold
+              </label>
             </div>
           </div>
         </ModalWithForm>

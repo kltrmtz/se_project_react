@@ -1,3 +1,5 @@
+import "../blocks/footer.css";
+
 const Footer = () => {
   console.log("footer");
 

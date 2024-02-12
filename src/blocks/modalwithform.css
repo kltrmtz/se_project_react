@@ -92,10 +92,16 @@
 .modal__radio {
   display: flex;
   flex-direction: column;
+  accent-color: #000;
+}
+
+.modal__input {
+  display: flex;
   gap: 8px;
 }
 
-.modal__radio-check {
+.modal__input-radio:checked ~ label {
+  color: #000;
   margin-right: 8px;
 }
 

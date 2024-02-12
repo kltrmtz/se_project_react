@@ -1,4 +1,4 @@
-.card_section {
+.card__section {
   margin-top: 20px;
 }
 
@@ -6,7 +6,7 @@
   position: relative;
 }
 
-.card_name {
+.card__name {
   text-align: center;
   font-family: "Cabinet Grotesk", sans-serif;
   font-weight: 700;
@@ -21,13 +21,13 @@
   border-radius: 4px;
 }
 
-.card_image {
+.card__image {
   width: 328px;
   height: 328px;
   border-radius: 10px;
 }
 
-.card_items {
+.card__items {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
