@@ -1,0 +1,28 @@
+.clothesItems {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.clothesItems__title {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 16px;
+  gap: 20px;
+}
+
+.clothesItems__add-new-button {
+  font-weight: 700;
+  background-color: #fff;
+  border-style: none;
+}
+
+.clothesItems__cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1015px;
+}

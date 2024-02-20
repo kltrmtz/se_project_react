@@ -1,4 +1,9 @@
 .profile {
   display: flex;
-  padding: 0 40px;
+  padding: 15px 40px;
+}
+
+.profile__clothes {
+  top: 135px;
+  left: 385px;
 }

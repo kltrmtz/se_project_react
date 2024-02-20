@@ -9,7 +9,7 @@ const ModalWithForm = ({
   isOpen,
   onSubmit,
 }) => {
-  console.log("ModalWithForm");
+  // console.log("ModalWithForm");
   return (
     <div className={`modal modal_type_${name}`}>
       <div className="modal__content">
@@ -20,6 +20,7 @@ const ModalWithForm = ({
             type="button"
             onClick={onClose}
           />
+
           {children}
           <button
             className="modal__button modal__button_disabled"

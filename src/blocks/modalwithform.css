@@ -35,7 +35,8 @@
   height: 16px;
   position: absolute;
   background-image: url("../images/close-button.svg");
-  color: #fff;
+  color: rgba(0, 0, 0, 0.3);
+
   border: none;
   background-color: transparent;
   background-repeat: none;
@@ -144,4 +145,16 @@
   padding: 20px 32px 32px 32px;
   border-radius: 0 0 16px 16px;
   gap: 12px;
+}
+
+.modal__preview-delete {
+  color: rgba(255, 77, 0, 1);
+  background-color: #fff;
+  font-weight: 700;
+  display: flex;
+  position: absolute;
+  right: 32px;
+  bottom: 68px;
+  border: none;
+  cursor: pointer;
 }

@@ -7,19 +7,20 @@ const ClothesSection = ({ onCreateModal, clothingItems, onSelectedCard }) => {
   return (
     <div className="clothesItems">
       <section className="clothesItems__title">
+        <div>Your items</div>
         <div>
-          Your Items
           <button
-            className="clothesItems__add-clothes-button"
+            className="clothesItems__add-new-button"
             type="text"
             onClick={onCreateModal}
           >
-            + Add Clothes
+            + Add new
           </button>
         </div>
       </section>
       <section className="clothesItems__cards">
-        {clothingItems.map((clothingItem) => (
+        {/* need to change to clothingItems */}
+        {defaultClothingItems.map((clothingItem) => (
           <ItemCard
             clothingItem={clothingItem}
             key={clothingItem._id}

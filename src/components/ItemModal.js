@@ -1,7 +1,7 @@
 import "../blocks/modalwithform.css";
 
-const ItemModal = ({ selectedCard, onClose }) => {
-  console.log("item modal");
+const ItemModal = ({ selectedCard, onClose, onCreateModal }) => {
+  // console.log("item modal");
 
   return (
     <div className={`modal`}>
@@ -18,8 +18,15 @@ const ItemModal = ({ selectedCard, onClose }) => {
         ></img>
         <div className="modal__preview-text">
           <div>{selectedCard.name}</div>
-          <div>Weather type:{selectedCard.weather}</div>
+          <div>Weather: {selectedCard.weather}</div>
         </div>
+        <button
+          className="modal__preview-delete"
+          type="button"
+          onClick={onCreateModal}
+        >
+          Delete item
+        </button>
       </div>
     </div>
   );

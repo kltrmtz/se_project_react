@@ -10,6 +10,7 @@ import { getForecastWeather, parseWeatherData } from "../utils/weatherApi.js";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.js";
 import AddItemModal from "./AddItemModal.js";
+import DeleteConfirmationModal from "./DeleteConfirmationModal.js";
 
 function App() {
   const weatherTemp = "";
@@ -27,6 +28,10 @@ function App() {
     setActiveModal("");
   };
 
+  const handleDeleteModal = () => {
+    setActiveModal("delete");
+  };
+
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
@@ -35,6 +40,11 @@ function App() {
   const onAddItem = (values) => {
     console.log(values);
     // clothing items & set
+  };
+
+  const handleCardDelete = (values) => {
+    console.log(values);
+    // remove cards
   };
 
   const handleToggleSwitchChange = () => {
@@ -89,7 +99,18 @@ function App() {
           />
         )}
         {activeModal === "preview" && (
-          <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+          <ItemModal
+            onCreateModal={handleDeleteModal}
+            selectedCard={selectedCard}
+            onClose={handleCloseModal}
+          />
+        )}
+        {activeModal === "delete" && (
+          <DeleteConfirmationModal
+            onCreateModal={handleDeleteModal}
+            onClose={handleCloseModal}
+            isOpen={activeModal === "delete"}
+          />
         )}
       </CurrentTemperatureUnitContext.Provider>
     </div>
