@@ -5,6 +5,11 @@
 @import url("./blocks/header.css");
 @import url("./blocks/main.css");
 @import url("./blocks/weather.css");
+@import url("./blocks/profile.css");
+@import url("./blocks/clothesSection.css");
+@import url("./blocks/sideBar.css");
+@import url("./blocks/toggleSwitch.css");
+@import url("./blocks/deleteConfirmationModal.css");
 
 /* body {
   margin: 0;

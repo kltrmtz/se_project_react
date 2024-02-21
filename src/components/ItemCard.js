@@ -1,15 +1,19 @@
 import "../blocks/card.css";
 
-const ItemCard = ({ clothingItem, onSelectedCard }) => {
+const ItemCard = ({ item, onSelectedCard }) => {
+  const onCardClick = () => {
+    onSelectedCard(item);
+  };
+
   return (
     <div className="card">
       <div>
-        <h3 className="card__name">{clothingItem.name}</h3>
+        <h3 className="card__name">{item.name}</h3>
         <img
-          src={clothingItem.link}
+          src={item.imageUrl}
           className="card__image"
-          onClick={() => onSelectedCard(clothingItem)}
-          alt={clothingItem.name}
+          onClick={onCardClick}
+          alt={item.name}
         />
       </div>
     </div>

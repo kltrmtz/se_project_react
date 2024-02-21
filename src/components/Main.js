@@ -7,7 +7,7 @@ import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUni
 
 function Main({ weatherTemp, onSelectedCard, clothingItems }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-  console.log(currentTemperatureUnit);
+  // console.log(currentTemperatureUnit);
   const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 999;
 
   const weatherType = (() => {
@@ -42,16 +42,16 @@ function Main({ weatherTemp, onSelectedCard, clothingItems }) {
     }
   })();
 
-  const filteredCards = defaultClothingItems.filter((clothingItem) => {
-    return clothingItem.weather.toLowerCase() === weatherType;
-  });
+  // const filteredCards = defaultClothingItems.filter((clothingItem) => {
+  //   return clothingItem.weather.toLowerCase() === weatherType;
+  // });
 
-  // const filteredCards = clothingItems.filter(
-  //   (clothingItem) => {
-  //     return clothingItem.weather.toLowerCase() === weatherType;
-  //   },
-  //   [weatherTemp]
-  // );
+  const filteredCards = clothingItems.filter(
+    (item) => {
+      return item.weather.toLowerCase() === weatherType;
+    },
+    [weatherTemp]
+  );
 
   // console.log(filteredCards);
 
@@ -61,10 +61,10 @@ function Main({ weatherTemp, onSelectedCard, clothingItems }) {
       <section className="card__section" id="card-section">
         Today is {temp}°{currentTemperatureUnit} / You may want to wear:
         <div className="card__items">
-          {filteredCards.map((clothingItem) => (
+          {filteredCards.map((item) => (
             <ItemCard
-              key={clothingItem._id}
-              clothingItem={clothingItem}
+              key={item._id}
+              item={item}
               onSelectedCard={onSelectedCard}
             />
           ))}

@@ -1,8 +1,6 @@
 import "../blocks/modalwithform.css";
 
 const ItemModal = ({ selectedCard, onClose, onCreateModal }) => {
-  // console.log("item modal");
-
   return (
     <div className={`modal`}>
       <div className="modal__preview">
@@ -13,7 +11,7 @@ const ItemModal = ({ selectedCard, onClose, onCreateModal }) => {
         ></button>
         <img
           className="modal__preview-image"
-          src={selectedCard.link}
+          src={selectedCard.imageUrl}
           alt="prieview image"
         ></img>
         <div className="modal__preview-text">

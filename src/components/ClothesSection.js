@@ -3,7 +3,7 @@ import { defaultClothingItems } from "../utils/constants.js";
 import ItemCard from "./ItemCard.js";
 
 const ClothesSection = ({ onCreateModal, clothingItems, onSelectedCard }) => {
-  console.log(ClothesSection);
+  // console.log(ClothesSection);
   return (
     <div className="clothesItems">
       <section className="clothesItems__title">
@@ -19,12 +19,12 @@ const ClothesSection = ({ onCreateModal, clothingItems, onSelectedCard }) => {
         </div>
       </section>
       <section className="clothesItems__cards">
-        {/* need to change to clothingItems */}
-        {defaultClothingItems.map((clothingItem) => (
+        {clothingItems.map((item) => (
           <ItemCard
-            clothingItem={clothingItem}
-            key={clothingItem._id}
+            item={item}
+            key={item._id}
             onSelectedCard={onSelectedCard}
+            onClick={clothingItems}
           />
         ))}
       </section>

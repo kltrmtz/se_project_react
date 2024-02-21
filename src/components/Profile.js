@@ -6,7 +6,7 @@ const Profile = ({
   clothingItems,
   onSelectedCard,
   onCreateModal,
-  onCardDelete,
+  handleCardDelete,
 }) => (
   <div className="profile">
     <section className="profile__sidebar">
@@ -17,7 +17,7 @@ const Profile = ({
         clothingItems={clothingItems}
         onCreateModal={onCreateModal}
         onSelectedCard={onSelectedCard}
-        //     onCardDelete={onCardDelete}
+        handleCardDelete={handleCardDelete}
       />
     </section>
   </div>

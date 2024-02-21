@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "../blocks/modalwithform.css";
 import ModalWithForm from "./ModalWithForm.js";
 
@@ -9,21 +8,21 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
     setName(e.target.value);
   };
 
-  const [link, setUrl] = useState("");
+  const [imageUrl, setUrl] = useState("");
   const handleUrlChange = (e) => {
     console.log(e.target.value);
     setUrl(e.target.value);
   };
 
-  const [weather, setRadio] = useState("");
-  const handleRadioChange = (e) => {
+  const [weather, setWeather] = useState("");
+  const handleWeatherChange = (e) => {
     console.log(e.target.value);
-    setRadio(e.target.value);
+    setWeather(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItem({ name, link, weather });
+    onAddItem({ name, imageUrl, weather });
   };
 
   return (
@@ -57,8 +56,8 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             id="modal-url-input"
             placeholder="Image URL"
             minLength="1"
-            maxLength="30"
-            value={link}
+            maxLength="600"
+            value={imageUrl}
             onChange={handleUrlChange}
           />
         </label>
@@ -73,7 +72,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
               name="weather"
               id="hot"
               value="hot"
-              onChange={handleRadioChange}
+              onChange={handleWeatherChange}
             />
             Hot
           </label>
@@ -86,7 +85,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
               name="weather"
               id="warm"
               value="warm"
-              onChange={handleRadioChange}
+              onChange={handleWeatherChange}
             />
             Warm
           </label>
@@ -99,7 +98,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
               name="weather"
               id="cold"
               value="cold"
-              onChange={handleRadioChange}
+              onChange={handleWeatherChange}
             />
             Cold
           </label>

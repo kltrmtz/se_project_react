@@ -6,7 +6,6 @@ const ModalWithForm = ({
   title,
   name,
   onClose,
-  isOpen,
   onSubmit,
 }) => {
   // console.log("ModalWithForm");
@@ -20,7 +19,6 @@ const ModalWithForm = ({
             type="button"
             onClick={onClose}
           />
-
           {children}
           <button
             className="modal__button modal__button_disabled"
