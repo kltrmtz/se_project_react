@@ -3,7 +3,6 @@ import { defaultClothingItems } from "../utils/constants.js";
 import ItemCard from "./ItemCard.js";
 
 const ClothesSection = ({ onCreateModal, clothingItems, onSelectedCard }) => {
-  // console.log(ClothesSection);
   return (
     <div className="clothesItems">
       <section className="clothesItems__title">

@@ -26,8 +26,17 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
     onAddItem({ name, imageUrl, weather });
   };
 
+  useEffect(() => {
+    if (isOpen) {
+      setName("");
+      setUrl("");
+      setWeather("");
+    }
+  }, [isOpen]);
+
   return (
     <ModalWithForm
+      buttonText="Add garment"
       title="New Garment"
       onClose={handleCloseModal}
       isOpen={isOpen}

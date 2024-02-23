@@ -7,20 +7,9 @@ import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUni
 
 function Main({ weatherTemp, onSelectedCard, clothingItems }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-  // console.log(currentTemperatureUnit);
   const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 999;
 
   const weatherType = (() => {
-    //   if (temp >= 86) {
-    //     return "hot";
-    //   } else if (temp >= 66 && temp <= 85) {
-    //     return "warm";
-    //   } else if (temp <= 65) {
-    //     return "cold";
-    //   }
-    // }, [weatherTemp]);
-
-    // console.log(weatherType);
     if (currentTemperatureUnit === "F") {
       if (temp >= 86) {
         return "hot";
@@ -42,10 +31,6 @@ function Main({ weatherTemp, onSelectedCard, clothingItems }) {
     }
   })();
 
-  // const filteredCards = defaultClothingItems.filter((clothingItem) => {
-  //   return clothingItem.weather.toLowerCase() === weatherType;
-  // });
-
   const filteredCards = clothingItems.filter(
     (item) => {
       return item.weather.toLowerCase() === weatherType;
@@ -53,13 +38,11 @@ function Main({ weatherTemp, onSelectedCard, clothingItems }) {
     [weatherTemp]
   );
 
-  // console.log(filteredCards);
-
   return (
     <main className="main">
       <WeatherCard day={false} type="sunny" weatherTemp={temp} />
       <section className="card__section" id="card-section">
-        Today is {temp}°{currentTemperatureUnit} / You may want to wear:
+        Today is {temp} °{currentTemperatureUnit} / You may want to wear:
         <div className="card__items">
           {filteredCards.map((item) => (
             <ItemCard
