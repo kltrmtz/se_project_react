@@ -1,7 +1,7 @@
 import "../blocks/deleteConfirmationModal.css";
 import ModalWithForm from "./ModalWithForm.js";
 
-const deleteConfirmationModal = ({ onClose, handleCardDelete }) => {
+const DeleteConfirmationModal = ({ onClose, handleCardDelete }) => {
   return (
     <div className="delete__modal">
       <div className="delete__modal-content">
@@ -35,4 +35,4 @@ const deleteConfirmationModal = ({ onClose, handleCardDelete }) => {
   );
 };
 
-export default deleteConfirmationModal;
+export default DeleteConfirmationModal;
