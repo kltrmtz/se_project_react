@@ -1,7 +1,7 @@
 // import "../blocks/registerModal.css";
 import ModalWithForm from "./ModalWithForm.js";
 
-const RegisterModal = ({ handleCloseModal, onAddItem, isOpen }) => {
+const RegisterModal = ({ handleCloseModal, onSignUp, isOpen }) => {
   // The inputs are controlled via a single piece of state: an object
   // object called `data`. This lets us avoid writing separate change
   // handlers for each input.
@@ -18,7 +18,7 @@ const RegisterModal = ({ handleCloseModal, onAddItem, isOpen }) => {
   //   setName(e.target.value);
   // };
   const [data, setData] = useState({
-    data: { email: "", password: "", name: "", avatarURL: "" },
+    data: { email: "", password: "", name: "", avatarUrl: "" },
   });
 
   const handleChange = (e) => {
@@ -31,7 +31,7 @@ const RegisterModal = ({ handleCloseModal, onAddItem, isOpen }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItem({ email, password, name, avatarURL });
+    onSignUp({ email, password, name, avatarUrl });
   };
 
   useState(() => {
@@ -50,8 +50,8 @@ const RegisterModal = ({ handleCloseModal, onAddItem, isOpen }) => {
 
   return (
     <ModalWithForm
-      buttonText="Next"
-      title="Sign up"
+      buttonText="Sign Up"
+      title="Sign Up"
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
@@ -67,7 +67,7 @@ const RegisterModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             placeholder="Email"
             minLength="1"
             maxLength="30"
-            value={email}
+            value={data.email}
             onChange={handleChange}
           />
         </label>
@@ -81,7 +81,7 @@ const RegisterModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             placeholder="Password"
             minLength="1"
             maxLength="30"
-            value={password}
+            value={data.password}
             onChange={handleChange}
           />
         </label>
@@ -95,7 +95,7 @@ const RegisterModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             placeholder="Name"
             minLength="1"
             maxLength="30"
-            value={name}
+            value={data.name}
             onChange={handleChange}
           />
         </label>
@@ -109,10 +109,11 @@ const RegisterModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             placeholder="Avatar URL"
             minLength="1"
             maxLength="600"
-            value={imageUrl}
-            onChange={handleUrlChange}
+            value={data.avatarUrl}
+            onChange={handleChange}
           />
         </label>
+        or Log In?
       </div>
     </ModalWithForm>
   );
