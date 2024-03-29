@@ -1,5 +1,5 @@
 // import "../blocks/registerModal.css";
-import ModalWithForm from "./ModalWithForm.js";
+import ModalWithForm from "./ModalWithForm.jsx";
 
 const RegisterModal = ({ handleCloseModal, onSignUp, isOpen }) => {
   // The inputs are controlled via a single piece of state: an object

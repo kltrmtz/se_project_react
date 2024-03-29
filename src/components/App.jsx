@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 import { getForecastWeather, parseWeatherData } from "../utils/weatherApi.js";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.js";
-import Header from "./Header.js";
-import Main from "./Main.js";
-import Profile from "./Profile.js";
-import Footer from "./Footer.js";
-import ItemModal from "./ItemModal.js";
-import AddItemModal from "./AddItemModal.js";
-import DeleteConfirmationModal from "./DeleteConfirmationModal.js";
+import Header from "./Header.jsx";
+import Main from "./Main.jsx";
+import Profile from "./Profile.jsx";
+import Footer from "./Footer.jsx";
+import ItemModal from "./ItemModal.jsx";
+import AddItemModal from "./AddItemModal.jsx";
+import DeleteConfirmationModal from "./DeleteConfirmationModal.jsx";
 import api from "../utils/api.js";
 
 function App() {

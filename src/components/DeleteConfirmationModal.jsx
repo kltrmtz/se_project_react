@@ -1,5 +1,5 @@
 import "../blocks/deleteConfirmationModal.css";
-import ModalWithForm from "./ModalWithForm.js";
+import ModalWithForm from "./ModalWithForm.jsx";
 
 const DeleteConfirmationModal = ({ onClose, handleCardDelete }) => {
   return (

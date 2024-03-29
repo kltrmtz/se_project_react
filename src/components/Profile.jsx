@@ -1,6 +1,6 @@
 import "../blocks/profile.css";
-import SideBar from "./SideBar.js";
-import ClothesSection from "./ClothesSection.js";
+import SideBar from "./SideBar.jsx";
+import ClothesSection from "./ClothesSection.jsx";
 
 const Profile = ({
   clothingItems,
