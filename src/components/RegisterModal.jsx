@@ -31,7 +31,8 @@ const RegisterModal = ({ handleCloseModal, onSignUp, isOpen }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSignUp({ email, password, name, avatarUrl });
+    // onSignUp({ email, password, name, avatarUrl });
+    onSignUp(data);
   };
 
   useState(() => {
@@ -54,7 +55,7 @@ const RegisterModal = ({ handleCloseModal, onSignUp, isOpen }) => {
       title="Sign Up"
       onClose={handleCloseModal}
       isOpen={isOpen}
-      onSubmit={handleSubmit}
+      onSignUp={handleSubmit}
     >
       <div className="modal__form">
         <label>
@@ -69,6 +70,7 @@ const RegisterModal = ({ handleCloseModal, onSignUp, isOpen }) => {
             maxLength="30"
             value={data.email}
             onChange={handleChange}
+            required
           />
         </label>
         <label>
@@ -83,6 +85,7 @@ const RegisterModal = ({ handleCloseModal, onSignUp, isOpen }) => {
             maxLength="30"
             value={data.password}
             onChange={handleChange}
+            required
           />
         </label>
         <label>
@@ -113,7 +116,9 @@ const RegisterModal = ({ handleCloseModal, onSignUp, isOpen }) => {
             onChange={handleChange}
           />
         </label>
-        or Log In?
+        <Link to="/login" className="login__link">
+          // or Log In? //{" "}
+        </Link>
       </div>
     </ModalWithForm>
   );
