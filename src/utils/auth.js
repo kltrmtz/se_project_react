@@ -29,9 +29,20 @@ const login = ({ email, password }) => {
   }).then(processResponse);
 };
 
+const getCurrentUser = (token) => {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(processResponse);
+};
+
 const auth = {
   register,
   login,
+  getCurrentUser,
 };
 
 export default auth;

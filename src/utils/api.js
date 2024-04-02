@@ -1,6 +1,6 @@
 import processResponse from "./utils";
 
-const baseUrl = "http://localhost:3001";
+export const baseUrl = "http://localhost:3001";
 
 const getItems = () => {
   return fetch(`${baseUrl}/items`, {
@@ -11,11 +11,12 @@ const getItems = () => {
   }).then(processResponse);
 };
 
-const addItems = ({ name, imageUrl, weather }) => {
+const addItems = ({ name, imageUrl, weather, token }) => {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       name,
@@ -25,11 +26,12 @@ const addItems = ({ name, imageUrl, weather }) => {
   }).then(processResponse);
 };
 
-const deleteItems = (_id) => {
+const deleteItems = (_id, token) => {
   return fetch(`${baseUrl}/items/${_id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
   }).then(processResponse);
 };
