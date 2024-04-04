@@ -2,7 +2,7 @@
 import ModalWithForm from "./ModalWithForm.jsx";
 import React, { useEffect, useState } from "react";
 
-const LoginModal = ({ handleCloseModal, onLogin, isOpen }) => {
+const LoginModal = ({ onLogin, isOpen, onClose, onSubmit }) => {
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -18,17 +18,27 @@ const LoginModal = ({ handleCloseModal, onLogin, isOpen }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // onLogin({ email, password });
+    onLogin({ email, password });
+    // if (!data.email || !data.password) {
+    //   return;
+    // }
     onLogin(data);
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      setData("");
+    }
+  }, [isOpen]);
 
   return (
     <ModalWithForm
       buttonText="Log In"
       title="Log In"
-      onClose={handleCloseModal}
+      onClose={onClose}
       isOpen={isOpen}
       onLogin={handleSubmit}
+      name="login"
     >
       <div className="modal__form">
         <label>
@@ -61,9 +71,9 @@ const LoginModal = ({ handleCloseModal, onLogin, isOpen }) => {
             required
           />
         </label>
-        <Link to="/register" className="signup__link">
+        {/* <Link to="/register" className="signup__link">
           // or Sign Up? //{" "}
-        </Link>
+        </Link> */}
       </div>
     </ModalWithForm>
   );

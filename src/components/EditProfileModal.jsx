@@ -1,11 +1,11 @@
-// import "../blocks/registerModal.css";
+// import "../blocks/editProfileModal.css";
 import ModalWithForm from "./ModalWithForm.jsx";
 import React, { useEffect, useState } from "react";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-const RegisterModal = ({ onSignUp, isOpen, onClose }) => {
+const EditProfileModal = ({ onSaveChange, isOpen, onClose }) => {
+  const { name, avatarUrl } = React.useContext(CurrentUserContext);
   const [data, setData] = useState({
-    email: "",
-    password: "",
     name: "",
     avatarUrl: "",
   });
@@ -20,7 +20,7 @@ const RegisterModal = ({ onSignUp, isOpen, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSignUp({ email, password, name, avatarUrl });
+    onSaveChange({ name, avatarUrl });
     // onSignUp(data);
   };
 
@@ -38,44 +38,14 @@ const RegisterModal = ({ onSignUp, isOpen, onClose }) => {
 
   return (
     <ModalWithForm
-      buttonText="Sign Up"
-      title="Sign Up"
+      buttonText="Save Changes"
+      title="Change profile data"
       onClose={onClose}
       isOpen={isOpen}
-      onSignUp={handleSubmit}
-      className="register"
+      onSaveChange={handleSubmit}
+      className="edit__profile"
     >
       <div className="modal__form">
-        <label>
-          Email*
-          <input
-            className="modal__form-input"
-            type="text"
-            name="email"
-            id="modal-email-input"
-            placeholder="Email"
-            minLength="1"
-            maxLength="30"
-            value={data.email}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <label>
-          Password*
-          <input
-            className="modal__form-input"
-            type="text"
-            name="password"
-            id="modal-password-input"
-            placeholder="Password"
-            minLength="1"
-            maxLength="30"
-            value={data.password}
-            onChange={handleChange}
-            required
-          />
-        </label>
         <label>
           Name *
           <input
@@ -91,7 +61,7 @@ const RegisterModal = ({ onSignUp, isOpen, onClose }) => {
           />
         </label>
         <label>
-          Avatar URL *
+          Avatar *
           <input
             className="modal__form-input"
             type="url"
@@ -104,12 +74,9 @@ const RegisterModal = ({ onSignUp, isOpen, onClose }) => {
             onChange={handleChange}
           />
         </label>
-        {/* <Link to="/login" className="login__link">
-          // or Log In? //{" "}
-        </Link> */}
       </div>
     </ModalWithForm>
   );
 };
 
-export default RegisterModal;
+export default EditProfileModal;

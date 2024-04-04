@@ -6,7 +6,12 @@ import { Link } from "react-router-dom/cjs/react-router-dom";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useContext } from "react";
 
-const Header = ({ onCreateModal, isLoggedIn }) => {
+const Header = ({
+  onCreateModal,
+  onCreateRegisterModal,
+  onCreateLoginModal,
+  isLoggedIn,
+}) => {
   console.log("Header");
   let { name, avatar } = useContext(CurrentUserContext);
   name = name || "";
@@ -39,14 +44,14 @@ const Header = ({ onCreateModal, isLoggedIn }) => {
             <button
               className="header__signup-button"
               type="text"
-              onClick={onCreateModal}
+              onClick={onCreateRegisterModal}
             >
               Sign Up
             </button>
             <button
               className="header__login-button"
               type="text"
-              onClick={onCreateModal}
+              onClick={onCreateLoginModal}
             >
               Log In
             </button>

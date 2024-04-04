@@ -2,7 +2,12 @@ import "../blocks/clothesSection.css";
 import { defaultClothingItems } from "../utils/constants.js";
 import ItemCard from "./ItemCard.jsx";
 
-const ClothesSection = ({ onCreateModal, clothingItems, onSelectedCard }) => {
+const ClothesSection = ({
+  onCreateModal,
+  clothingItems,
+  onSelectedCard,
+  isLoggedIn,
+}) => {
   return (
     <div className="clothesItems">
       <section className="clothesItems__title">
@@ -24,6 +29,7 @@ const ClothesSection = ({ onCreateModal, clothingItems, onSelectedCard }) => {
             key={item._id}
             onSelectedCard={onSelectedCard}
             onClick={clothingItems}
+            isLoggedIn={isLoggedIn}
           />
         ))}
       </section>

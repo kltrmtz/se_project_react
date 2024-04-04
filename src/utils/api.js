@@ -36,10 +36,25 @@ const deleteItems = (_id, token) => {
   }).then(processResponse);
 };
 
+const updateUserData = ({ name, avatarUrl, token }) => {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      name,
+      avatarUrl,
+    }),
+  }).then(processResponse);
+};
+
 const api = {
   getItems,
   addItems,
   deleteItems,
+  updateUserData,
 };
 
 export default api;

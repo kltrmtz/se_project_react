@@ -7,6 +7,7 @@ import { Switch, Route } from "react-router-dom/cjs/react-router-dom.js";
 import Header from "./Header.jsx";
 import Main from "./Main.jsx";
 import Profile from "./Profile.jsx";
+import EditProfileModal from "./EditProfileModal.jsx";
 import Footer from "./Footer.jsx";
 import ItemModal from "./ItemModal.jsx";
 import AddItemModal from "./AddItemModal.jsx";
@@ -15,6 +16,7 @@ import RegisterModal from "./RegisterModal.jsx";
 import LoginModal from "./LoginModal.jsx";
 import api from "../utils/api.js";
 import auth from "../utils/auth.js";
+import ProtectedRoute from "./ProtectedRoute.jsx";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -80,6 +82,10 @@ function App() {
     setActiveModal("login");
   };
 
+  const handleEditProfileModal = () => {
+    setActiveModal("edit__profile");
+  };
+
   const onAddItem = (values) => {
     api
       .addItems(values)
@@ -116,6 +122,7 @@ function App() {
     auth.register({ email, password, name, avatarUrl }).then((data) => {
       console.log(data);
       // login();
+      handleCloseModal();
     });
   };
 
@@ -146,11 +153,13 @@ function App() {
   };
 
   const handleLoginSubmit = ({ email, password }) => {
-    auth.login(email, password).then((data) => {
+    auth.login(email, password).then((userData) => {
       // login();
-      handleLogin(data);
-      localStorage.setItem("jwt", res.token);
+      handleLogin(userData);
+      // localStorage.setItem("jwt", res.token);
+      localStorage.setItem("jwt", userData.token);
     });
+    handleCloseModal();
   };
 
   //   // in App.jsx
@@ -175,6 +184,18 @@ function App() {
   //      })
   //      .catch(console.error);
   // };
+
+  const handleEditProfile = ({ name, avatarUrl }) => {
+    api
+      .updateUserData(name, avatarUrl, token)
+      .then((userData) => {
+        setCurrentUser({ userData });
+        handleCloseModal();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
     api
@@ -239,6 +260,8 @@ function App() {
         >
           <Header
             onCreateModal={handleCreateModal}
+            onCreateRegisterModal={handleRegisterModal}
+            onCreateLoginModal={handleLoginModal}
             temp={temp}
             isLoggedIn={isLoggedIn}
           />
@@ -253,11 +276,14 @@ function App() {
               />
             </Route>
             <Route path="/profile">
-              <Profile
-                onSelectedCard={handleSelectedCard}
-                clothingItems={clothingItems}
-                onCreateModal={handleCreateModal}
-              />
+              <ProtectedRoute isLoggedIn={isLoggedIn} path="/profile">
+                <Profile
+                  onSelectedCard={handleSelectedCard}
+                  clothingItems={clothingItems}
+                  onCreateModal={handleCreateModal}
+                  onChangeProfile={handleEditProfileModal}
+                />
+              </ProtectedRoute>
             </Route>
           </Switch>
 
@@ -298,6 +324,14 @@ function App() {
               onClose={handleCloseModal}
               isOpen={activeModal === "login"}
               onLogin={handleLoginSubmit}
+            />
+          )}
+          {activeModal === "edit__profile" && (
+            <EditProfileModal
+              onCreateModal={handleLoginModal}
+              onClose={handleCloseModal}
+              isOpen={activeModal === "edit__profile"}
+              onSaveChange={handleEditProfile}
             />
           )}
         </CurrentTemperatureUnitContext.Provider>
