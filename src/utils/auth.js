@@ -16,7 +16,7 @@ const register = ({ name, avatar, email, password }) => {
   }).then(processResponse);
 };
 
-const login = (email, password) => {
+const login = ({ email, password }) => {
   return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {

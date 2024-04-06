@@ -3,31 +3,25 @@ import ModalWithForm from "./ModalWithForm.jsx";
 import React, { useEffect, useState } from "react";
 
 const LoginModal = ({ onLogin, isOpen, onClose, onSubmit }) => {
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onLogin({ email, password });
-    // if (!data.email || !data.password) {
-    //   return;
-    // }
-    onLogin(data);
   };
 
   useEffect(() => {
     if (isOpen) {
-      setData("");
+      setEmail("");
+      setPassword("");
     }
   }, [isOpen]);
 
@@ -37,7 +31,7 @@ const LoginModal = ({ onLogin, isOpen, onClose, onSubmit }) => {
       title="Log In"
       onClose={onClose}
       isOpen={isOpen}
-      onLogin={handleSubmit}
+      onSubmit={handleSubmit}
       name="login"
     >
       <div className="modal__form">
@@ -51,8 +45,8 @@ const LoginModal = ({ onLogin, isOpen, onClose, onSubmit }) => {
             placeholder="Email"
             minLength="1"
             maxLength="30"
-            value={data.email}
-            onChange={handleChange}
+            value={email}
+            onChange={handleEmailChange}
             required
           />
         </label>
@@ -66,8 +60,8 @@ const LoginModal = ({ onLogin, isOpen, onClose, onSubmit }) => {
             placeholder="Password"
             minLength="1"
             maxLength="30"
-            value={data.password}
-            onChange={handleChange}
+            value={password}
+            onChange={handlePasswordChange}
             required
           />
         </label>
@@ -78,46 +72,5 @@ const LoginModal = ({ onLogin, isOpen, onClose, onSubmit }) => {
     </ModalWithForm>
   );
 };
-//     <div className="login">
-//       <Logo title={"CryptoDucks"} />
-//       <p className="login__welcome">
-//         This app contains highly sensitive information. Please sign in or
-//         register to access CryptoDucks.
-//       </p>
-//       <form className="login__form">
-//         <label htmlFor="username">Login:</label>
-//         <input
-//           id="username"
-//           required
-//           name="username"
-//           type="text"
-//           value={data.username}
-//           onChange={handleChange}
-//         />
-//         <label htmlFor="password">Password:</label>
-//         <input
-//           id="password"
-//           required
-//           name="password"
-//           type="password"
-//           value={data.password}
-//           onChange={handleChange}
-//         />
-//         <div className="login__button-container">
-//           <button type="submit" className="login__link">
-//             Log in
-//           </button>
-//         </div>
-//       </form>
-
-//       <div className="login__signup">
-//         <p>Not a member yet?</p>
-//         <Link to="/register" className="signup__link">
-//           Sign up here
-//         </Link>
-//       </div>
-//     </div>
-//   );
-// };
 
 export default LoginModal;

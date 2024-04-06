@@ -17,6 +17,7 @@ import LoginModal from "./LoginModal.jsx";
 import api from "../utils/api.js";
 import auth from "../utils/auth.js";
 import ProtectedRoute from "./ProtectedRoute.jsx";
+import { setToken, getToken } from "../utils/token.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -31,31 +32,6 @@ function App() {
     avatar: "",
     _id: "",
   });
-
-  // new base
-
-  //   const [userData, setUserData] = useState({ username: "", email: "" });
-  //   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  //   const navigate = useNavigate();
-
-  //   const handleLogin = ({ username, password }) => {
-  //     if (!username || !password) {
-  //       return;
-  //     }
-
-  //     auth
-  //       .authorize(username, password)
-  //       .then((data) => {
-  //         // Verify that a jwt is included before logging the user in.
-  //         if (data.jwt) {
-  //           setUserData(data.user);  // save user's data to state
-  //           setIsLoggedIn(true);    // log the user in
-  //           navigate("/ducks");    // send them to /ducks
-  //         }
-  //       })
-  //       .catch(console.error);
-  //   };
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -119,71 +95,54 @@ function App() {
   // new register & login
 
   const handleRegisterSubmit = ({ email, password, name, avatarUrl }) => {
-    auth.register({ email, password, name, avatarUrl }).then((data) => {
-      console.log(data);
-      // login();
-      handleCloseModal();
-    });
+    auth
+      .register(email, password, name, avatarUrl)
+      .then((data) => {
+        setIsLoggedIn(true);
+        console.log(data);
+        // login();
+        handleCloseModal();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
-  //   // in App.jsx
+  // Login attempt
 
-  // function App() {
-  //   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  //   // New
-  //   const handleRegistration = ({
-  //     username,
-  //     email,
-  //     password,
-  //     confirmPassword,
-  //   }) => {
-  //     if (password === confirmPassword) {
-  //       auth.register(username, password, email)
-  //        .then(() => {
-  //           // TODO: handle succesful registration
-  //         })
-  //         .catch(console.error);
-  //     }
-  //   };
-
-  const handleLogin = ({ name, email, avatar, _id }) => {
-    setIsLoggedIn(true);
-    setCurrentUser({ name, email, avatar, _id });
-  };
-
-  const handleLoginSubmit = ({ email, password }) => {
-    auth.login(email, password).then((userData) => {
-      // login();
-      handleLogin(userData);
-      // localStorage.setItem("jwt", res.token);
-      localStorage.setItem("jwt", userData.token);
-    });
-    handleCloseModal();
-  };
-
-  //   // in App.jsx
-
-  // // handleLogin accepts one parameter: an object with two properties.
-  // const handleLogin = ({ username, password }) => {
-  //   // If username or password empty, return without sending a request.
-  //   if (!username || !password) {
-  //     return;
-  //   }
-
-  //  // We pass the username and password as positional arguments. The
-  //  // authorize function is set up to rename `username` to `identifier`
-  //  // before sending a request to the server, because that is what the
-  //  // API is expecting.
-  //  auth
-  //    .authorize(username, password)
-  //      .then((data) => {
-  //        // For now we just log the response data to the console.
-  //        // We'll update this soon.
-  //        console.log(data);
-  //      })
-  //      .catch(console.error);
+  // const handleLogin = ({ name, email, avatar, _id }) => {
+  //   setIsLoggedIn(true);
+  //   setCurrentUser({ name, email, avatar, _id });
   // };
+
+  // const handleLoginSubmit = ({ email, password }) => {
+  //   auth.login(email, password).then((userData) => {
+  //     // login();
+  //     handleLogin(userData);
+  //     // localStorage.setItem("jwt", res.token);
+  //     localStorage.setItem("jwt", userData.token);
+  //   });
+  //   handleCloseModal();
+  // };
+
+  const handleLogin = ({ email, password }) => {
+    if (!email || !password) {
+      return;
+    }
+
+    auth
+      .login(email, password)
+      .then((data) => {
+        if (data.jwt) {
+          // Save the token to local storage
+          setToken(data.jwt);
+          setCurrentUser(data.user);
+          setIsLoggedIn(true);
+          handleCloseModal();
+        }
+      })
+      .catch((err) => console.log(err));
+  };
 
   const handleEditProfile = ({ name, avatarUrl }) => {
     api
@@ -218,39 +177,35 @@ function App() {
   }, []);
   console.log(currentTemperatureUnit);
 
-  useEffect(() => {
-    // const token = localStorage.getItem("jwt", res.token);
-    const token = localStorage.getItem("jwt");
-    if (token) {
-      getCurrentUser(token)
-        .then((data) => {
-          handleLogin(data);
-        })
-        .catch((err) => console.log(err));
-    }
-  }, []);
-
-  // inside of App.jsx
+  // Token
 
   // useEffect(() => {
-  //   const jwt = getToken();
-
-  //   if (!jwt) {
-  //     return;
+  //   // const token = localStorage.getItem("jwt", res.token);
+  //   const token = localStorage.getItem("jwt");
+  //   if (token) {
+  //     getCurrentUser(token)
+  //       .then((data) => {
+  //         handleLogin(data);
+  //       })
+  //       .catch((err) => console.log(err));
   //   }
-
-  //   // Call the function, passing it the JWT.
-  //   api
-  //     .getUserInfo(jwt)
-  //     .then(({ username, email }) => {
-  //       // If the response is successful, log the user in, save their
-  //       // data to state, and navigate them to /ducks.
-  //       setIsLoggedIn(true);
-  //       setUserData({ username, email });
-  //       navigate("/ducks");
-  //     })
-  //     .catch(console.error);
   // }, []);
+
+  useEffect(() => {
+    const jwt = getToken();
+    if (!jwt) {
+      return;
+    }
+    auth
+      .getCurrentUser(jwt)
+      .then(({ email, name, avatar, _id }) => {
+        setIsLoggedIn(true);
+        setCurrentUser({ name, avatar, email, _id });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -281,6 +236,7 @@ function App() {
                   onSelectedCard={handleSelectedCard}
                   clothingItems={clothingItems}
                   onCreateModal={handleCreateModal}
+                  currentUser={currentUser}
                   onChangeProfile={handleEditProfileModal}
                 />
               </ProtectedRoute>
@@ -323,7 +279,7 @@ function App() {
               onCreateModal={handleLoginModal}
               onClose={handleCloseModal}
               isOpen={activeModal === "login"}
-              onLogin={handleLoginSubmit}
+              onLogin={handleLogin}
             />
           )}
           {activeModal === "edit__profile" && (

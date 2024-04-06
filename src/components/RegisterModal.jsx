@@ -3,36 +3,39 @@ import ModalWithForm from "./ModalWithForm.jsx";
 import React, { useEffect, useState } from "react";
 
 const RegisterModal = ({ onSignUp, isOpen, onClose }) => {
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-    name: "",
-    avatarUrl: "",
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [avatarUrl, setAvatarUrl] = useState("");
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    console.log(e.target.value);
+  };
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    console.log(e.target.value);
+  };
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+    console.log(e.target.value);
+  };
+  const handleAvatarUrlChange = (e) => {
+    setAvatarUrl(e.target.value);
+    console.log(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onSignUp({ email, password, name, avatarUrl });
-    // onSignUp(data);
   };
-
-  // useState(() => {
-  //   if (isOpen) {
-  //     setData("");
-  //   }
-  // }, [isOpen]);
 
   useEffect(() => {
     if (isOpen) {
-      setData("");
+      setEmail("");
+      setPassword("");
+      setName("");
+      setAvatarUrl("");
     }
   }, [isOpen]);
 
@@ -56,8 +59,8 @@ const RegisterModal = ({ onSignUp, isOpen, onClose }) => {
             placeholder="Email"
             minLength="1"
             maxLength="30"
-            value={data.email}
-            onChange={handleChange}
+            value={email}
+            onChange={handleEmailChange}
             required
           />
         </label>
@@ -71,8 +74,8 @@ const RegisterModal = ({ onSignUp, isOpen, onClose }) => {
             placeholder="Password"
             minLength="1"
             maxLength="30"
-            value={data.password}
-            onChange={handleChange}
+            value={password}
+            onChange={handlePasswordChange}
             required
           />
         </label>
@@ -86,8 +89,8 @@ const RegisterModal = ({ onSignUp, isOpen, onClose }) => {
             placeholder="Name"
             minLength="1"
             maxLength="30"
-            value={data.name}
-            onChange={handleChange}
+            value={name}
+            onChange={handleNameChange}
           />
         </label>
         <label>
@@ -100,8 +103,8 @@ const RegisterModal = ({ onSignUp, isOpen, onClose }) => {
             placeholder="Avatar URL"
             minLength="1"
             maxLength="600"
-            value={data.avatarUrl}
-            onChange={handleChange}
+            value={avatarUrl}
+            onChange={handleAvatarUrlChange}
           />
         </label>
         {/* <Link to="/login" className="login__link">
