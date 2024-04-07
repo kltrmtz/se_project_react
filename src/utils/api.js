@@ -50,11 +50,33 @@ const updateUserData = ({ name, avatarUrl, token }) => {
   }).then(processResponse);
 };
 
+const addCardLike = (id, token) => {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(processResponse);
+};
+
+const removeCardLike = (id, token) => {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(processResponse);
+};
+
 const api = {
   getItems,
   addItems,
   deleteItems,
   updateUserData,
+  addCardLike,
+  removeCardLike,
 };
 
 export default api;

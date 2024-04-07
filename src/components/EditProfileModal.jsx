@@ -3,7 +3,7 @@ import ModalWithForm from "./ModalWithForm.jsx";
 import React, { useEffect, useState } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-const EditProfileModal = ({ onSaveChange, isOpen, onClose }) => {
+const EditProfileModal = ({ onSaveChange, isOpen, onClose, onSubmit }) => {
   const { name, avatarUrl } = React.useContext(CurrentUserContext);
   const [data, setData] = useState({
     name: "",
@@ -20,7 +20,8 @@ const EditProfileModal = ({ onSaveChange, isOpen, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSaveChange({ name, avatarUrl });
+    // onSaveChange({ name, avatarUrl });
+    onSubmit({ name, avatarUrl });
     // onSignUp(data);
   };
 
@@ -42,7 +43,8 @@ const EditProfileModal = ({ onSaveChange, isOpen, onClose }) => {
       title="Change profile data"
       onClose={onClose}
       isOpen={isOpen}
-      onSaveChange={handleSubmit}
+      // onSaveChange={handleSubmit}
+      onsubmit={handleSubmit}
       className="edit__profile"
     >
       <div className="modal__form">

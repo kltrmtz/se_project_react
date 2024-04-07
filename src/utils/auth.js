@@ -13,7 +13,8 @@ const register = ({ name, avatar, email, password }) => {
       email,
       password,
     }),
-  }).then(processResponse);
+    // }).then(processResponse);
+  });
 };
 
 const login = ({ email, password }) => {
@@ -27,6 +28,7 @@ const login = ({ email, password }) => {
       password,
     }),
   }).then(processResponse);
+  // });
 };
 
 const getCurrentUser = (token) => {

@@ -144,6 +144,14 @@ function App() {
       .catch((err) => console.log(err));
   };
 
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+
+    setCurrentUser({});
+
+    localStorage.removeItem("jwt");
+  };
+
   const handleEditProfile = ({ name, avatarUrl }) => {
     api
       .updateUserData(name, avatarUrl, token)
@@ -154,6 +162,29 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  // new card like dislike
+
+  const handleCardLike = ({ id, isLiked }) => {
+    const token = localStorage.getItem("jwt");
+    !isLiked
+      ? api
+          .addCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err))
+      : api
+          .removeCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err));
   };
 
   useEffect(() => {
@@ -228,6 +259,7 @@ function App() {
                 handleCardDelete={handleCardDelete}
                 clothingItems={clothingItems}
                 cards={clothingItems}
+                onCardLike={handleCardLike}
               />
             </Route>
             <Route path="/profile">
@@ -237,7 +269,10 @@ function App() {
                   clothingItems={clothingItems}
                   onCreateModal={handleCreateModal}
                   currentUser={currentUser}
+                  isLoggedIn={isLoggedIn}
                   onChangeProfile={handleEditProfileModal}
+                  onCardLike={handleCardLike}
+                  onLogOut={handleLogout}
                 />
               </ProtectedRoute>
             </Route>
@@ -271,7 +306,8 @@ function App() {
               onCreateModal={handleRegisterModal}
               onClose={handleCloseModal}
               isOpen={activeModal === "register"}
-              onSignUp={handleRegisterSubmit}
+              // onSignUp={handleRegisterSubmit}
+              onSubmit={handleRegisterSubmit}
             />
           )}
           {activeModal === "login" && (
@@ -279,7 +315,8 @@ function App() {
               onCreateModal={handleLoginModal}
               onClose={handleCloseModal}
               isOpen={activeModal === "login"}
-              onLogin={handleLogin}
+              // onLogin={handleLogin}
+              onSubmit={handleLogin}
             />
           )}
           {activeModal === "edit__profile" && (

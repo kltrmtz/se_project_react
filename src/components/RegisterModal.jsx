@@ -2,7 +2,7 @@
 import ModalWithForm from "./ModalWithForm.jsx";
 import React, { useEffect, useState } from "react";
 
-const RegisterModal = ({ onSignUp, isOpen, onClose }) => {
+const RegisterModal = ({ onSignUp, isOpen, onClose, onSubmit }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -26,8 +26,10 @@ const RegisterModal = ({ onSignUp, isOpen, onClose }) => {
   };
 
   const handleSubmit = (e) => {
+    // debugger
     e.preventDefault();
-    onSignUp({ email, password, name, avatarUrl });
+    // onSignUp({ email, password, name, avatarUrl });
+    onSubmit({ email, password, name, avatarUrl });
   };
 
   useEffect(() => {
@@ -45,8 +47,9 @@ const RegisterModal = ({ onSignUp, isOpen, onClose }) => {
       title="Sign Up"
       onClose={onClose}
       isOpen={isOpen}
-      onSignUp={handleSubmit}
+      // onSignUp={handleSubmit}
       className="register"
+      onSubmit={handleSubmit}
     >
       <div className="modal__form">
         <label>

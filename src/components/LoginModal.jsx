@@ -14,8 +14,10 @@ const LoginModal = ({ onLogin, isOpen, onClose, onSubmit }) => {
   };
 
   const handleSubmit = (e) => {
+    // debugger;
     e.preventDefault();
-    onLogin({ email, password });
+    // onLogin({ email, password });
+    onSubmit({ email, password });
   };
 
   useEffect(() => {
