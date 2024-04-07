@@ -10,11 +10,11 @@ const Profile = ({
   isLoggedIn,
   onCardLike,
   onChangeProfileData,
-  onLogout,
+  onLogOut,
 }) => (
   <div className="profile">
     <section className="profile__sidebar">
-      <SideBar onChangeProfileData={onChangeProfileData} onLogout={onLogout} />
+      <SideBar onChangeProfileData={onChangeProfileData} onLogOut={onLogOut} />
     </section>
     <section className="profile__clothes">
       <ClothesSection

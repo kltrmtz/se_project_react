@@ -36,6 +36,9 @@
   margin-top: 20px;
 }
 
+.card__content {
+}
+
 .card__like-button {
   background-image: url("../images/liked-default.svg");
   width: 18px;

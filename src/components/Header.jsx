@@ -59,12 +59,25 @@ const Header = ({
         )}
         {isLoggedIn && (
           <div>
-            <Link className="header__name" to="/profile">
+            {/* <Link className="header__name" to="/profile">
               <div>Name</div>
             </Link>
             <div>
               <img className="header__avatar-image" src={avatar} alt="avatar" />
-            </div>
+            </div> */}
+            <Link to="/profile" className="header__user">
+              <div className="header__name">{name}</div>
+              <div>
+                <img
+                  className="header__avatar-image"
+                  src={avatar}
+                  alt="avatar"
+                />
+              </div>
+            </Link>
+            {/* <Link to="/profile" className="header__name">
+              <Avatar name={name} avatar={avatar} width={40} />
+            </Link> */}
           </div>
         )}
       </div>

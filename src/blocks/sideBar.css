@@ -1,9 +1,10 @@
-.sidebar {
+/* .sidebar {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 16px;
   width: 229px;
-}
+  flex-direction: column;
+} */
 
 .sidebar__avatar-image {
   max-height: 56px;

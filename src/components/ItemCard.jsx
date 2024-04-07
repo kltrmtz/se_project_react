@@ -40,14 +40,8 @@ const ItemCard = ({ item, onSelectedCard, isLoggedIn, onCardLike }) => {
 
   return (
     <div className="card">
-      <div>
-        <h3 className="card__name">{item.name}</h3>
-        <img
-          src={item.imageUrl}
-          className="card__image"
-          onClick={onCardClick}
-          alt={item.name}
-        />
+      <div className="card__content">
+        <div className="card__name">{item.name}</div>
         {isLoggedIn && (
           <button
             className={`card__like-button ${itemLikeButtonClassName()}`}
@@ -55,6 +49,13 @@ const ItemCard = ({ item, onSelectedCard, isLoggedIn, onCardLike }) => {
           ></button>
         )}
       </div>
+      <img
+        src={item.imageUrl}
+        className="card__image"
+        onClick={onCardClick}
+        alt={item.name}
+      />
+      {/* </div> */}
     </div>
   );
 };

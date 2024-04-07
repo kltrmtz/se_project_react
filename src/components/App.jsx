@@ -151,14 +151,23 @@ function App() {
   //     });
   // };
 
-  const handleLogout = (e) => {
-    e.preventDefault();
+  const handleLogOut = () => {
     setIsLoggedIn(false);
 
     setCurrentUser({});
 
     localStorage.removeItem("jwt");
   };
+
+  // const handleLogout = (e) => {
+  //   e.preventDefault();
+  //   setIsLoggedIn(false);
+
+  //   setCurrentUser({});
+
+  //   localStorage.removeToken("jwt");
+  //   localStorage.removeItem("jwt");
+  // };
 
   const handleEditProfile = ({ name, avatarUrl }) => {
     api
@@ -278,9 +287,9 @@ function App() {
                   onCreateModal={handleCreateModal}
                   currentUser={currentUser}
                   isLoggedIn={isLoggedIn}
-                  onChangeProfile={handleEditProfileModal}
+                  onChangeProfileData={handleEditProfileModal}
                   onCardLike={handleCardLike}
-                  onLogOut={handleLogout}
+                  onLogOut={handleLogOut}
                 />
               </ProtectedRoute>
             </Route>
