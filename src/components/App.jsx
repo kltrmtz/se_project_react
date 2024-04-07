@@ -94,9 +94,9 @@ function App() {
 
   // new register & login
 
-  const handleRegisterSubmit = ({ email, password, name, avatarUrl }) => {
+  const handleRegisterSubmit = ({ email, password, name, avatar }) => {
     auth
-      .register(email, password, name, avatarUrl)
+      .register({ email, password, name, avatar })
       .then((data) => {
         setIsLoggedIn(true);
         console.log(data);
@@ -110,41 +110,49 @@ function App() {
 
   // Login attempt
 
-  // const handleLogin = ({ name, email, avatar, _id }) => {
-  //   setIsLoggedIn(true);
-  //   setCurrentUser({ name, email, avatar, _id });
-  // };
-
-  // const handleLoginSubmit = ({ email, password }) => {
-  //   auth.login(email, password).then((userData) => {
-  //     // login();
-  //     handleLogin(userData);
-  //     // localStorage.setItem("jwt", res.token);
-  //     localStorage.setItem("jwt", userData.token);
-  //   });
-  //   handleCloseModal();
-  // };
-
-  const handleLogin = ({ email, password }) => {
-    if (!email || !password) {
-      return;
-    }
-
-    auth
-      .login(email, password)
-      .then((data) => {
-        if (data.jwt) {
-          // Save the token to local storage
-          setToken(data.jwt);
-          setCurrentUser(data.user);
-          setIsLoggedIn(true);
-          handleCloseModal();
-        }
-      })
-      .catch((err) => console.log(err));
+  const handleLogin = ({ name, email, avatar, _id }) => {
+    setIsLoggedIn(true);
+    setCurrentUser({ name, email, avatar, _id });
   };
 
-  const handleLogout = () => {
+  const handleLoginSubmit = ({ email, password }) => {
+    auth
+      .login({ email, password })
+      .then((userData) => {
+        handleLogin(userData);
+        localStorage.setItem("jwt", userData.token);
+        handleCloseModal();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // const handleLogin = ({ email, password }) => {
+  //   if (!email || !password) {
+  //     return;
+  //   }
+
+  //   auth
+  //     .login({ email, password })
+  //     .then((data) => {
+  //       if (data.jwt) {
+  //         console.log(data);
+  //         // Save the token to local storage
+  //         setToken(data.jwt);
+  //         setCurrentUser(data.user);
+  //         setIsLoggedIn(true);
+  //         // handleCloseModal();
+  //       }
+  //       handleCloseModal();
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
+  const handleLogout = (e) => {
+    e.preventDefault();
     setIsLoggedIn(false);
 
     setCurrentUser({});
@@ -316,7 +324,8 @@ function App() {
               onClose={handleCloseModal}
               isOpen={activeModal === "login"}
               // onLogin={handleLogin}
-              onSubmit={handleLogin}
+              // onSubmit={handleLogin}
+              onSubmit={handleLoginSubmit}
             />
           )}
           {activeModal === "edit__profile" && (

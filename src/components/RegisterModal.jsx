@@ -6,7 +6,7 @@ const RegisterModal = ({ onSignUp, isOpen, onClose, onSubmit }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [avatarUrl, setAvatarUrl] = useState("");
+  const [avatar, setAvatarUrl] = useState("");
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -29,7 +29,7 @@ const RegisterModal = ({ onSignUp, isOpen, onClose, onSubmit }) => {
     // debugger
     e.preventDefault();
     // onSignUp({ email, password, name, avatarUrl });
-    onSubmit({ email, password, name, avatarUrl });
+    onSubmit({ email, password, name, avatar });
   };
 
   useEffect(() => {
@@ -106,7 +106,7 @@ const RegisterModal = ({ onSignUp, isOpen, onClose, onSubmit }) => {
             placeholder="Avatar URL"
             minLength="1"
             maxLength="600"
-            value={avatarUrl}
+            value={avatar}
             onChange={handleAvatarUrlChange}
           />
         </label>

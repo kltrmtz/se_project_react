@@ -7,10 +7,14 @@ const Profile = ({
   onSelectedCard,
   onCreateModal,
   handleCardDelete,
+  isLoggedIn,
+  onCardLike,
+  onChangeProfileData,
+  onLogout,
 }) => (
   <div className="profile">
     <section className="profile__sidebar">
-      <SideBar />
+      <SideBar onChangeProfileData={onChangeProfileData} onLogout={onLogout} />
     </section>
     <section className="profile__clothes">
       <ClothesSection
@@ -18,6 +22,8 @@ const Profile = ({
         onCreateModal={onCreateModal}
         onSelectedCard={onSelectedCard}
         handleCardDelete={handleCardDelete}
+        isLoggedIn={isLoggedIn}
+        onCardLike={onCardLike}
       />
     </section>
   </div>
