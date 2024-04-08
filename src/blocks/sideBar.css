@@ -9,6 +9,10 @@
 .sidebar__avatar-image {
   max-height: 56px;
   max-width: 56px;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  display: block;
+  object-fit: cover;
 }
 
 .sidebar__name {

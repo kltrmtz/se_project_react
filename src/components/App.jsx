@@ -128,29 +128,6 @@ function App() {
       });
   };
 
-  // const handleLogin = ({ email, password }) => {
-  //   if (!email || !password) {
-  //     return;
-  //   }
-
-  //   auth
-  //     .login({ email, password })
-  //     .then((data) => {
-  //       if (data.jwt) {
-  //         console.log(data);
-  //         // Save the token to local storage
-  //         setToken(data.jwt);
-  //         setCurrentUser(data.user);
-  //         setIsLoggedIn(true);
-  //         // handleCloseModal();
-  //       }
-  //       handleCloseModal();
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
   const handleLogOut = () => {
     setIsLoggedIn(false);
 
@@ -159,19 +136,11 @@ function App() {
     localStorage.removeItem("jwt");
   };
 
-  // const handleLogout = (e) => {
-  //   e.preventDefault();
-  //   setIsLoggedIn(false);
+  // handle edit profile
 
-  //   setCurrentUser({});
-
-  //   localStorage.removeToken("jwt");
-  //   localStorage.removeItem("jwt");
-  // };
-
-  const handleEditProfile = ({ name, avatarUrl }) => {
+  const handleEditProfile = ({ name, avatar }) => {
     api
-      .updateUserData(name, avatarUrl, token)
+      .updateUserData({ name, avatar, token })
       .then((userData) => {
         setCurrentUser({ userData });
         handleCloseModal();
@@ -181,13 +150,13 @@ function App() {
       });
   };
 
-  // new card like dislike
+  // card like dislike
 
   const handleCardLike = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
     !isLiked
       ? api
-          .addCardLike(id, token)
+          .addCardLike({ id, token })
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((item) => (item._id === id ? updatedCard : item))
@@ -195,7 +164,7 @@ function App() {
           })
           .catch((err) => console.log(err))
       : api
-          .removeCardLike(id, token)
+          .removeCardLike({ id, token })
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((item) => (item._id === id ? updatedCard : item))

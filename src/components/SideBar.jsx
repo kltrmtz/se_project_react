@@ -9,8 +9,12 @@ const SideBar = ({ onChangeProfileData, onLogOut }) => {
   return (
     <div className="sidebar">
       <div className="profile__user">
-        <img className="sidebar__avatar-image" src={avatar} alt="avatar" />
-        <div className="sidebar__name">{name || "User"}</div>
+        <img
+          className="sidebar__avatar-image"
+          src={currentUser.avatar}
+          alt="avatar"
+        />
+        <div className="sidebar__name">{currentUser.name}</div>
       </div>
       {currentUser && (
         <div className="profile__sidebar">

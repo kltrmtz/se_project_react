@@ -2,7 +2,7 @@
 import ModalWithForm from "./ModalWithForm.jsx";
 import React, { useEffect, useState } from "react";
 
-const LoginModal = ({ onLogin, isOpen, onClose, onSubmit }) => {
+const LoginModal = ({ isOpen, onClose, onSubmit }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -14,9 +14,7 @@ const LoginModal = ({ onLogin, isOpen, onClose, onSubmit }) => {
   };
 
   const handleSubmit = (e) => {
-    // debugger;
     e.preventDefault();
-    // onLogin({ email, password });
     onSubmit({ email, password });
   };
 

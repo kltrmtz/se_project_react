@@ -26,9 +26,7 @@ const RegisterModal = ({ onSignUp, isOpen, onClose, onSubmit }) => {
   };
 
   const handleSubmit = (e) => {
-    // debugger
     e.preventDefault();
-    // onSignUp({ email, password, name, avatarUrl });
     onSubmit({ email, password, name, avatar });
   };
 
@@ -47,7 +45,6 @@ const RegisterModal = ({ onSignUp, isOpen, onClose, onSubmit }) => {
       title="Sign Up"
       onClose={onClose}
       isOpen={isOpen}
-      // onSignUp={handleSubmit}
       className="register"
       onSubmit={handleSubmit}
     >

@@ -13,8 +13,8 @@
   font-size: 20px;
   line-height: 24px;
   position: absolute;
-  top: 10%;
-  left: 50%;
+  /* top: 10%;
+  left: 50%; */
   transform: translate(-50%, -50%);
   background-color: white;
   padding: 2px 12px;
@@ -37,17 +37,31 @@
 }
 
 .card__content {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+  top: 5%;
+  left: 55%;
 }
 
 .card__like-button {
   background-image: url("../images/liked-default.svg");
   width: 18px;
   height: 15px;
-  border: none;
+  border: 2px;
   background-color: transparent;
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
+  position: absolute;
+  align-self: center;
+  margin-left: 25px;
+  /* top: 10%;
+  left: 50%; */
 }
 
 .card__like-button_active {

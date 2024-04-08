@@ -1,8 +1,10 @@
 import "../blocks/card.css";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 const ItemCard = ({ item, onSelectedCard, isLoggedIn, onCardLike }) => {
+  // const [isLiked, setIsLiked] = useState(false);
+  const currentUser = useContext(CurrentUserContext);
   // Check if the item was liked by the current user
   // The likes array should be an array of ids
   const isLiked = item.likes.some((id) => id === currentUser._id);
@@ -22,18 +24,19 @@ const ItemCard = ({ item, onSelectedCard, isLoggedIn, onCardLike }) => {
     onSelectedCard(item);
   };
 
-  // const handleLike = () => {
-  //   onCardLike();
-  // };
-
   const handleLike = () => {
-    onCardLike({ item, isLiked }).then(() => {
-      setIsLiked((prev) => !prev);
-    });
+    // debugger
+    onCardLike({ item, isLiked })
+      .then(() => {
+        setIsLiked((prev) => !prev);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   // useEffect(() => {
-  //   if (item.likes.includes(_id)) {
+  //   if (item.likes.includes(id)) {
   //     setIsLiked(true);
   //   }
   // }, [isLoggedIn]);

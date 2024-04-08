@@ -1,39 +1,31 @@
 // import "../blocks/editProfileModal.css";
 import ModalWithForm from "./ModalWithForm.jsx";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-const EditProfileModal = ({ onSaveChange, isOpen, onClose, onSubmit }) => {
-  const { name, avatarUrl } = React.useContext(CurrentUserContext);
-  const [data, setData] = useState({
-    name: "",
-    avatarUrl: "",
-  });
+const EditProfileModal = ({ isOpen, onClose, onSubmit }) => {
+  const currentUser = useContext(CurrentUserContext);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  const [name, setName] = useState("");
+  const [avatar, setAvatarUrl] = useState("");
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleAvatarChange = (e) => {
+    setAvatarUrl(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // onSaveChange({ name, avatarUrl });
-    onSubmit({ name, avatarUrl });
-    // onSignUp(data);
+    onSubmit({ name, avatar });
   };
-
-  // useState(() => {
-  //   if (isOpen) {
-  //     setData("");
-  //   }
-  // }, [isOpen]);
 
   useEffect(() => {
     if (isOpen) {
-      setData("");
+      setName("");
+      setAvatarUrl("");
     }
   }, [isOpen]);
 
@@ -43,7 +35,6 @@ const EditProfileModal = ({ onSaveChange, isOpen, onClose, onSubmit }) => {
       title="Change profile data"
       onClose={onClose}
       isOpen={isOpen}
-      // onSaveChange={handleSubmit}
       onsubmit={handleSubmit}
       className="edit__profile"
     >
@@ -58,8 +49,8 @@ const EditProfileModal = ({ onSaveChange, isOpen, onClose, onSubmit }) => {
             placeholder="Name"
             minLength="1"
             maxLength="30"
-            value={data.name}
-            onChange={handleChange}
+            value={name}
+            onChange={handleNameChange}
           />
         </label>
         <label>
@@ -72,8 +63,8 @@ const EditProfileModal = ({ onSaveChange, isOpen, onClose, onSubmit }) => {
             placeholder="Avatar URL"
             minLength="1"
             maxLength="600"
-            value={data.avatarUrl}
-            onChange={handleChange}
+            value={avatar}
+            onChange={handleAvatarChange}
           />
         </label>
       </div>
