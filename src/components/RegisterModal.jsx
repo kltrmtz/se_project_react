@@ -2,7 +2,7 @@
 import ModalWithForm from "./ModalWithForm.jsx";
 import React, { useEffect, useState } from "react";
 
-const RegisterModal = ({ isOpen, onClose, onSubmit, handleLoginModal }) => {
+const RegisterModal = ({ isOpen, onClose, onSubmit, linkToLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -108,17 +108,13 @@ const RegisterModal = ({ isOpen, onClose, onSubmit, handleLoginModal }) => {
           />
         </label>
         {/* <Link to="/login" className="login__link">
-          // or Log In? //{" "}
+          or Log in
         </Link> */}
         <div className="modal__buttons">
           <button className="modal__button" type="submit">
             Sign Up
           </button>
-          <button
-            className="modal__login-link"
-            type="button"
-            onClick={handleLoginModal}
-          >
+          <button className="modal__link" type="button" onClick={linkToLogin}>
             or Log in
           </button>
         </div>

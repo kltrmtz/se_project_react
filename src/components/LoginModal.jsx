@@ -2,7 +2,7 @@
 import ModalWithForm from "./ModalWithForm.jsx";
 import React, { useEffect, useState } from "react";
 
-const LoginModal = ({ isOpen, onClose, onSubmit }) => {
+const LoginModal = ({ isOpen, onClose, onSubmit, linkToRegister }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -65,9 +65,21 @@ const LoginModal = ({ isOpen, onClose, onSubmit }) => {
             required
           />
         </label>
-        <Link to="/register" className="signup__link">
+        {/* <Link to="/register" className="signup__link">
           // or Sign Up? //{" "}
-        </Link>
+        </Link> */}
+        <div className="modal__buttons">
+          <button className="modal__button" type="submit">
+            Log In
+          </button>
+          <button
+            className="modal__link"
+            type="button"
+            onClick={linkToRegister}
+          >
+            or Sign Up
+          </button>
+        </div>
       </div>
     </ModalWithForm>
   );

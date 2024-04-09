@@ -64,6 +64,9 @@ const EditProfileModal = ({ isOpen, onClose, onSubmit }) => {
             onChange={handleAvatarChange}
           />
         </label>
+        <button className="modal__button modal__button_disabled" type="submit">
+          Save changes
+        </button>
       </div>
     </ModalWithForm>
   );

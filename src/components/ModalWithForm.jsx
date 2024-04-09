@@ -19,12 +19,12 @@ const ModalWithForm = ({
             onClick={onClose}
           />
           {children}
-          <button
+          {/* <button
             className="modal__button modal__button_disabled"
             type="submit"
           >
             {buttonText}
-          </button>
+          </button> */}
         </form>
       </div>
     </div>

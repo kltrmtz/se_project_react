@@ -88,11 +88,21 @@ function App() {
       });
   };
 
+  //  handle toggleswitch
+
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
 
-  // new register & login
+  // handle redirect user
+
+  const handleRedirectUser = () => {
+    activeModal === "register"
+      ? setActiveModal("login")
+      : setActiveModal("register");
+  };
+
+  // handle register
 
   const handleRegisterSubmit = ({ email, password, name, avatar }) => {
     auth
@@ -100,7 +110,7 @@ function App() {
       .then((data) => {
         setIsLoggedIn(true);
         console.log(data);
-        // login();
+
         handleCloseModal();
       })
       .catch((err) => {
@@ -108,7 +118,7 @@ function App() {
       });
   };
 
-  // Login attempt
+  // handle Login Logout
 
   const handleLogin = ({ name, email, avatar, _id }) => {
     setIsLoggedIn(true);
@@ -201,20 +211,6 @@ function App() {
   }, []);
   console.log(currentTemperatureUnit);
 
-  // Token
-
-  // useEffect(() => {
-  //   // const token = localStorage.getItem("jwt", res.token);
-  //   const token = localStorage.getItem("jwt");
-  //   if (token) {
-  //     getCurrentUser(token)
-  //       .then((data) => {
-  //         handleLogin(data);
-  //       })
-  //       .catch((err) => console.log(err));
-  //   }
-  // }, []);
-
   useEffect(() => {
     const jwt = getToken();
     if (!jwt) {
@@ -300,7 +296,7 @@ function App() {
               onClose={handleCloseModal}
               isOpen={activeModal === "register"}
               onSubmit={handleRegisterSubmit}
-              onclick={handleLoginModal}
+              linkToLogin={handleRedirectUser}
             />
           )}
           {activeModal === "login" && (
@@ -309,7 +305,7 @@ function App() {
               onClose={handleCloseModal}
               isOpen={activeModal === "login"}
               onSubmit={handleLoginSubmit}
-              onclick={handleRegisterModal}
+              linkToRegister={handleRedirectUser}
             />
           )}
           {activeModal === "edit__profile" && (

@@ -72,3 +72,23 @@
   border-style: none;
   cursor: pointer;
 }
+
+.header__signup-button {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  background-color: #fff;
+  border-style: none;
+  cursor: pointer;
+}
+
+.header__login-button {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  background-color: #fff;
+  border-style: none;
+  cursor: pointer;
+}
