@@ -32,7 +32,7 @@ const LoginModal = ({ isOpen, onClose, onSubmit }) => {
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleSubmit}
-      name="login"
+      className="login"
     >
       <div className="modal__form">
         <label>
@@ -65,9 +65,9 @@ const LoginModal = ({ isOpen, onClose, onSubmit }) => {
             required
           />
         </label>
-        {/* <Link to="/register" className="signup__link">
+        <Link to="/register" className="signup__link">
           // or Sign Up? //{" "}
-        </Link> */}
+        </Link>
       </div>
     </ModalWithForm>
   );

@@ -7,6 +7,7 @@ const ClothesSection = ({
   clothingItems,
   onSelectedCard,
   isLoggedIn,
+  onCardLike,
 }) => {
   return (
     <div className="clothesItems">
@@ -29,6 +30,7 @@ const ClothesSection = ({
             key={item._id}
             onSelectedCard={onSelectedCard}
             onClick={clothingItems}
+            onCardLike={onCardLike}
             isLoggedIn={isLoggedIn}
           />
         ))}

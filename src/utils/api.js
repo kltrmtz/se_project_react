@@ -36,7 +36,7 @@ const deleteItems = (_id, token) => {
   }).then(processResponse);
 };
 
-const updateUserData = ({ name, avatar, token }) => {
+const updateUserData = ({ name, avatar }, token) => {
   return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
@@ -50,7 +50,7 @@ const updateUserData = ({ name, avatar, token }) => {
   }).then(processResponse);
 };
 
-const addCardLike = ({ _id, token }) => {
+const addCardLike = (_id, token) => {
   return fetch(`${baseUrl}/items/${_id}/likes`, {
     method: "PUT",
     headers: {
@@ -60,7 +60,7 @@ const addCardLike = ({ _id, token }) => {
   }).then(processResponse);
 };
 
-const removeCardLike = ({ _id, token }) => {
+const removeCardLike = (_id, token) => {
   return fetch(`${baseUrl}/items/${_id}/likes`, {
     method: "DELETE",
     headers: {

@@ -33,6 +33,14 @@
 
 .header__user {
   display: flex;
+  text-decoration: none;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  color: black;
+  align-self: center;
+  margin-right: 12px;
 }
 
 .header__name {

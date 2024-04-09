@@ -139,8 +139,9 @@ function App() {
   // handle edit profile
 
   const handleEditProfile = ({ name, avatar }) => {
+    const token = localStorage.getItem("jwt");
     api
-      .updateUserData({ name, avatar, token })
+      .updateUserData({ name, avatar }, token)
       .then((userData) => {
         setCurrentUser({ userData });
         handleCloseModal();
@@ -152,22 +153,28 @@ function App() {
 
   // card like dislike
 
-  const handleCardLike = ({ id, isLiked }) => {
+  const handleCardLike = (id, isLiked, setIsLiked) => {
     const token = localStorage.getItem("jwt");
     !isLiked
       ? api
-          .addCardLike({ id, token })
+          .addCardLike(id, token)
           .then((updatedCard) => {
+            setIsLiked(true);
             setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
+              cards.map((item) =>
+                item._id === updatedCard.data.id ? updatedCard.data : item
+              )
             );
           })
           .catch((err) => console.log(err))
       : api
-          .removeCardLike({ id, token })
+          .removeCardLike(id, token)
           .then((updatedCard) => {
+            setIsLiked(false);
             setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
+              cards.map((item) =>
+                item._id === updatedCard.data.id ? updatedCard.data : item
+              )
             );
           })
           .catch((err) => console.log(err));
@@ -215,7 +222,7 @@ function App() {
     }
     auth
       .getCurrentUser(jwt)
-      .then(({ email, name, avatar, _id }) => {
+      .then(({ name, avatar, email, _id }) => {
         setIsLoggedIn(true);
         setCurrentUser({ name, avatar, email, _id });
       })
@@ -292,8 +299,8 @@ function App() {
               onCreateModal={handleRegisterModal}
               onClose={handleCloseModal}
               isOpen={activeModal === "register"}
-              // onSignUp={handleRegisterSubmit}
               onSubmit={handleRegisterSubmit}
+              onclick={handleLoginModal}
             />
           )}
           {activeModal === "login" && (
@@ -301,9 +308,8 @@ function App() {
               onCreateModal={handleLoginModal}
               onClose={handleCloseModal}
               isOpen={activeModal === "login"}
-              // onLogin={handleLogin}
-              // onSubmit={handleLogin}
               onSubmit={handleLoginSubmit}
+              onclick={handleRegisterModal}
             />
           )}
           {activeModal === "edit__profile" && (
@@ -311,7 +317,7 @@ function App() {
               onCreateModal={handleLoginModal}
               onClose={handleCloseModal}
               isOpen={activeModal === "edit__profile"}
-              onSaveChange={handleEditProfile}
+              onSubmit={handleEditProfile}
             />
           )}
         </CurrentTemperatureUnitContext.Provider>
