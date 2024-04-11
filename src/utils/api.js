@@ -11,7 +11,9 @@ const getItems = () => {
   }).then(processResponse);
 };
 
-const addItems = ({ name, imageUrl, weather, token }) => {
+const addItems = ({ name, imageUrl, weather }, token) => {
+  console.log(123);
+  console.log(token);
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {

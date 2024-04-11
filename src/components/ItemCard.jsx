@@ -5,16 +5,15 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 const ItemCard = ({ item, onSelectedCard, isLoggedIn, onCardLike }) => {
   const currentUser = useContext(CurrentUserContext);
   const id = item._id;
-  const [isLiked, setIsLiked] = useState(
-    item.likes.some((id) => id === currentUser?._id)
-  );
+
+  const isLiked = item.likes.some((id) => id === currentUser?._id);
 
   const itemLikeButtonClassName = isLoggedIn
     ? `${isLiked ? "card__like-button_active" : "card__like-button"}`
     : `${isLiked ? "card__like-button_active" : "card__like-button"}`;
 
-  const handeLike = () => {
-    onCardLike(id, isLiked, setIsLiked);
+  const handleLike = () => {
+    onCardLike(id, isLiked);
   };
 
   const onCardClick = () => {
@@ -27,7 +26,7 @@ const ItemCard = ({ item, onSelectedCard, isLoggedIn, onCardLike }) => {
         <div className="card__name">{item.name}</div>
         <button
           className={itemLikeButtonClassName}
-          onClick={handeLike}
+          onClick={handleLike}
         ></button>
       </div>
       <img

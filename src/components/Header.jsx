@@ -13,8 +13,7 @@ const Header = ({
   isLoggedIn,
 }) => {
   console.log("Header");
-  let { name, avatar } = useContext(CurrentUserContext);
-  name = name || "";
+  const { name, avatar } = useContext(CurrentUserContext);
 
   return (
     <header className="header">
