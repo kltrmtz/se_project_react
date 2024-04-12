@@ -168,8 +168,9 @@ function App() {
     const token = localStorage.getItem("jwt");
     api
       .updateUserData({ name, avatar }, token)
-      .then((userData) => {
-        setCurrentUser({ userData });
+
+      .then((res) => {
+        setCurrentUser(res.data);
         handleCloseModal();
       })
       .catch((err) => {
@@ -225,23 +226,30 @@ function App() {
   }, []);
   console.log(currentTemperatureUnit);
 
-  useEffect(() => {
-    //
+  useEffect((userData) => {
     const jwt = localStorage.getItem("jwt");
     if (!jwt) {
       return;
     }
-    auth
-      .getCurrentUser(jwt)
-      .then(({ name, avatar, email, _id }) => {
-        setIsLoggedIn(true);
-        setCurrentUser({ name, avatar, email, _id });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    //
+    auth;
+    handleCurrentUser(userData);
   }, []);
+
+  // useEffect(() => {
+  //   const jwt = localStorage.getItem("jwt");
+  //   if (!jwt) {
+  //     return;
+  //   }
+  //   auth
+  //     .getCurrentUser(jwt)
+  //     .then(({ name, avatar, email, _id }) => {
+  //       setIsLoggedIn(true);
+  //       setCurrentUser({ name, avatar, email, _id });
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
