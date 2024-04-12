@@ -120,20 +120,33 @@ function App() {
       });
   };
 
+  const handleCurrentUser = () => {
+    const jwt = localStorage.getItem("jwt");
+    auth
+      .getCurrentUser(jwt)
+      .then(({ name, avatar, email, _id }) => {
+        setIsLoggedIn(true);
+        setCurrentUser({ name, avatar, email, _id });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   // handle Login Logout
 
-  const handleLogin = ({ name, email, avatar, _id }) => {
+  const handleLogin = (userData) => {
     setIsLoggedIn(true);
-    setCurrentUser({ name, email, avatar, _id });
+    handleCurrentUser(userData);
   };
 
   const handleLoginSubmit = ({ email, password }) => {
-    const token = localStorage.getItem("jwt");
     auth
-      .login({ email, password }, token)
-      .then((userData) => {
-        handleLogin(userData);
-        localStorage.setItem("jwt", userData.token);
+      .login({ email, password })
+
+      .then((res) => {
+        localStorage.setItem("jwt", res.token);
+        handleLogin(res);
         handleCloseModal();
       })
       .catch((err) => {
@@ -174,7 +187,7 @@ function App() {
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((item) =>
-                item._id === updatedCard.data.id ? updatedCard.data : item
+                item._id === updatedCard.data._id ? updatedCard.data : item
               )
             );
           })
@@ -184,7 +197,7 @@ function App() {
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((item) =>
-                item._id === updatedCard.data.id ? updatedCard.data : item
+                item._id === updatedCard.data._id ? updatedCard.data : item
               )
             );
           })
@@ -213,7 +226,7 @@ function App() {
   console.log(currentTemperatureUnit);
 
   useEffect(() => {
-    // const jwt = getToken();
+    //
     const jwt = localStorage.getItem("jwt");
     if (!jwt) {
       return;
@@ -227,6 +240,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
+    //
   }, []);
 
   return (
