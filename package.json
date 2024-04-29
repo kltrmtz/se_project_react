@@ -2,7 +2,7 @@
   "name": "se_project_react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://wtwr.pakasak.com/",
+  "homepage": "https://wtwr.pakasak.com/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -22,7 +22,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "scp -r ./build/* kltrmtz@wtwr.pakasak.com:/home/kltrmtz/frontend"
   },
   "eslintConfig": {
     "extends": [
