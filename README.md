@@ -1,4 +1,4 @@
-# WTWR (What to Wear?)
+# WTWR (What to Wear?): Front End
 
 ## About the project
 
@@ -10,10 +10,16 @@ For this project an interactive weather app was built implementing the JavaScrip
 
 - [Create React App](https://github.com/facebook/create-react-app)
 
-## Link to Back End
+## Link to Frontend
 
-- [Express Back End](https://github.com/kltrmtz/se_project_express.git)
+- [React Frontend](https://github.com/kltrmtz/se_project_react.git)
+
+## Link to Backend
+
+- [Express Backend](https://github.com/kltrmtz/se_project_express.git)
 
 ## Project Domain Link
 
-http://wtwr.pakasak.com
+- [Frontend Domain](http://wtwr.pakasak.com)
+
+- [Backend Domain](http://api.wtwr.pakasak.com)
