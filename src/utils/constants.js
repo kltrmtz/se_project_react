@@ -1,3 +1,16 @@
+import daySunny from "../images/day/day-sunny.svg";
+import dayFog from "../images/day/day-fog.svg";
+import dayCloudy from "../images/day/day-cloudy.svg";
+import dayRain from "../images/day/day-rain.svg";
+import dayStorm from "../images/day/day-storm.svg";
+import daySnow from "../images/day/day-snow.svg";
+import nightSunny from "../images/night/night-sunny.svg";
+import nightFog from "./images/night/night-fog.svg";
+import nightCloudy from "../images/night/night-cloudy.svg";
+import nightRain from "../images/night/night-rain.svg";
+import nightStorm from "../images/night/night-storm.svg";
+import nightSnow from "../images/night/night-snow.svg";
+
 export const defaultClothingItems = [
   {
     _id: 0,
@@ -48,18 +61,18 @@ export const defaultClothingItems = [
 //     ? "https://api.wtwr.pakasak.com"
 //     : "http://localhost:3001";
 
-import daySunny from "../images/day/day-sunny.svg";
-import dayFog from "../images/day/day-fog.svg";
-import dayCloudy from "../images/day/day-cloudy.svg";
-import dayRain from "../images/day/day-rain.svg";
-import dayStorm from "../images/day/day-storm.svg";
-import daySnow from "../images/day/day-snow.svg";
-import nightSunny from "../images/night/night-sunny.svg";
-import nightFog from "../images/night/night-fog.svg";
-import nightCloudy from "../images/night/night-cloudy.svg";
-import nightRain from "../images/night/night-rain.svg";
-import nightStorm from "../images/night/night-storm.svg";
-import nightSnow from "../images/night/night-snow.svg";
+// import daySunny from "./images/day/day-sunny.svg";
+// import dayFog from "./images/day/day-fog.svg";
+// import dayCloudy from "./images/day/day-cloudy.svg";
+// import dayRain from "./images/day/day-rain.svg";
+// import dayStorm from "./images/day/day-storm.svg";
+// import daySnow from "./images/day/day-snow.svg";
+// import nightSunny from "./images/night/night-sunny.svg";
+// import nightFog from "./images/night/night-fog.svg";
+// import nightCloudy from "./images/night/night-cloudy.svg";
+// import nightRain from "../images/night/night-rain.svg";
+// import nightStorm from "../images/night/night-storm.svg";
+// import nightSnow from "../images/night/night-snow.svg";
 
 export const weatherOptions = [
   {

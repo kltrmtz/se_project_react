@@ -17,9 +17,9 @@ const WeatherCard = ({ day = true, type = "", weatherTemp = "" }) => {
         {weatherTemp} °{currentTemperatureUnit}
       </div>
       <img
-        src={weatherOptionUrl}
+        url={weatherOptionUrl}
         className="weather__image"
-        alt="weather image"
+        alt="weather bar"
       />
     </section>
   );
