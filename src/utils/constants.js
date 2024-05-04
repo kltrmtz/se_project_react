@@ -43,82 +43,170 @@ export const defaultClothingItems = [
   },
 ];
 
-export const baseUrl =
-  process.env.NODE_ENV === "production"
-    ? "https://api.wtwr.pakasak.com"
-    : "http://localhost:3001";
+// export const baseUrl =
+//   process.env.NODE_ENV === "production"
+//     ? "https://api.wtwr.pakasak.com"
+//     : "http://localhost:3001";
+
+import daySunny from "../images/day/day-sunny.svg";
+import dayFog from "../images/day/day-fog.svg";
+import dayCloudy from "../images/day/day-cloudy.svg";
+import dayRain from "../images/day/day-rain.svg";
+import dayStorm from "../images/day/day-storm.svg";
+import daySnow from "../images/day/day-snow.svg";
+import nightSunny from "../images/night/night-sunny.svg";
+import nightFog from "../images/night/night-fog.svg";
+import nightCloudy from "../images/night/night-cloudy.svg";
+import nightRain from "../images/night/night-rain.svg";
+import nightStorm from "../images/night/night-storm.svg";
+import nightSnow from "../images/night/night-snow.svg";
 
 export const weatherOptions = [
   {
-    url: "/src/images/day/day-sunny.svg",
+    url: daySunny,
     day: true,
     type: "sunny",
     alt: "day-sunny",
   },
   {
-    url: "/src/images/day/day-fog.svg",
+    url: dayFog,
     day: true,
     type: "fog",
     alt: "day-fog",
   },
   {
-    url: "/src/images/day/day-cloudy.svg",
+    url: dayCloudy,
     day: true,
     type: "cloudy",
     alt: "day-cloudy",
   },
   {
-    url: "/src/images/day/day-rain.svg",
+    url: dayRain,
     day: true,
     type: "rain",
     alt: "day-rain",
   },
   {
-    url: "/src/images/day/day-storm.svg",
+    url: dayStorm,
     day: true,
     type: "storm",
     alt: "day-storm",
   },
   {
-    url: "/src/images/day/day-snow.svg",
+    url: daySnow,
     day: true,
     type: "snow",
     alt: "day-snow",
   },
   {
-    url: "/src/images/night/night-sunny.svg",
+    url: nightSunny,
     day: false,
     type: "sunny",
     alt: "night-sunny",
   },
   {
-    url: "/src/images/night/night-fog.svg",
+    url: nightFog,
     day: false,
     type: "fog",
     alt: "night-fog",
   },
   {
-    url: "/src/images/night/night-cloudy.svg",
+    url: nightCloudy,
     day: false,
     type: "cloudy",
     alt: "night-cloudy",
   },
   {
-    url: "/src/images/night/night-rain.svg",
+    url: nightRain,
     day: false,
     type: "rain",
     alt: "night-rain",
   },
   {
-    url: "/src/images/night/night-storm.svg",
+    url: nightStorm,
     day: false,
     type: "storm",
     alt: "night-storm",
   },
   {
-    url: "/src/images/night/night-snow.svg",
+    url: nightSnow,
     day: false,
     type: "snow",
     alt: "night-snow",
   },
 ];
+
+// export const weatherOptions = [
+//   {
+//     url: "/src/images/day/day-sunny.svg",
+//     day: true,
+//     type: "sunny",
+//     alt: "day-sunny",
+//   },
+//   {
+//     url: "/src/images/day/day-fog.svg",
+//     day: true,
+//     type: "fog",
+//     alt: "day-fog",
+//   },
+//   {
+//     url: "/src/images/day/day-cloudy.svg",
+//     day: true,
+//     type: "cloudy",
+//     alt: "day-cloudy",
+//   },
+//   {
+//     url: "/src/images/day/day-rain.svg",
+//     day: true,
+//     type: "rain",
+//     alt: "day-rain",
+//   },
+//   {
+//     url: "/src/images/day/day-storm.svg",
+//     day: true,
+//     type: "storm",
+//     alt: "day-storm",
+//   },
+//   {
+//     url: "/src/images/day/day-snow.svg",
+//     day: true,
+//     type: "snow",
+//     alt: "day-snow",
+//   },
+//   {
+//     url: "/src/images/night/night-sunny.svg",
+//     day: false,
+//     type: "sunny",
+//     alt: "night-sunny",
+//   },
+//   {
+//     url: "/src/images/night/night-fog.svg",
+//     day: false,
+//     type: "fog",
+//     alt: "night-fog",
+//   },
+//   {
+//     url: "/src/images/night/night-cloudy.svg",
+//     day: false,
+//     type: "cloudy",
+//     alt: "night-cloudy",
+//   },
+//   {
+//     url: "/src/images/night/night-rain.svg",
+//     day: false,
+//     type: "rain",
+//     alt: "night-rain",
+//   },
+//   {
+//     url: "/src/images/night/night-storm.svg",
+//     day: false,
+//     type: "storm",
+//     alt: "night-storm",
+//   },
+//   {
+//     url: "/src/images/night/night-snow.svg",
+//     day: false,
+//     type: "snow",
+//     alt: "night-snow",
+//   },
+// ];
